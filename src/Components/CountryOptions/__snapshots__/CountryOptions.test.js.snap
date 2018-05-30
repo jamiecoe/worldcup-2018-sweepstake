@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App renders properly 1`] = `
+exports[`CountryOptions renders properly 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <App />,
+  Symbol(enzyme.__unrendered__): <CountryOptions />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -18,10 +18,15 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        <Header />,
-        <Countdown />,
-        <Rules />,
-        <CountryOptions />,
+        <CountryLevel
+          level="Top"
+/>,
+        <CountryLevel
+          level="Mid"
+/>,
+        <CountryLevel
+          level="Low"
+/>,
       ],
     },
     "ref": null,
@@ -29,8 +34,10 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "function",
-        "props": Object {},
+        "nodeType": "class",
+        "props": Object {
+          "level": "Top",
+        },
         "ref": null,
         "rendered": null,
         "type": [Function],
@@ -39,7 +46,9 @@ ShallowWrapper {
         "instance": null,
         "key": undefined,
         "nodeType": "class",
-        "props": Object {},
+        "props": Object {
+          "level": "Mid",
+        },
         "ref": null,
         "rendered": null,
         "type": [Function],
@@ -47,17 +56,10 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "function",
-        "props": Object {},
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "function",
-        "props": Object {},
+        "nodeType": "class",
+        "props": Object {
+          "level": "Low",
+        },
         "ref": null,
         "rendered": null,
         "type": [Function],
@@ -72,10 +74,15 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <Header />,
-          <Countdown />,
-          <Rules />,
-          <CountryOptions />,
+          <CountryLevel
+            level="Top"
+/>,
+          <CountryLevel
+            level="Mid"
+/>,
+          <CountryLevel
+            level="Low"
+/>,
         ],
       },
       "ref": null,
@@ -83,8 +90,10 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "function",
-          "props": Object {},
+          "nodeType": "class",
+          "props": Object {
+            "level": "Top",
+          },
           "ref": null,
           "rendered": null,
           "type": [Function],
@@ -93,7 +102,9 @@ ShallowWrapper {
           "instance": null,
           "key": undefined,
           "nodeType": "class",
-          "props": Object {},
+          "props": Object {
+            "level": "Mid",
+          },
           "ref": null,
           "rendered": null,
           "type": [Function],
@@ -101,17 +112,10 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "function",
-          "props": Object {},
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "function",
-          "props": Object {},
+          "nodeType": "class",
+          "props": Object {
+            "level": "Low",
+          },
           "ref": null,
           "rendered": null,
           "type": [Function],
