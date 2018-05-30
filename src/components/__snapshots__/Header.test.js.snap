@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should render properly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Header />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <h1>
+          World Cup 2018 Russia Sweep Stake
+</h1>,
+        <img
+          alt="World Cup 2018 Russia logo"
+          src="https://upload.wikimedia.org/wikipedia/en/6/67/2018_FIFA_World_Cup.svg"
+/>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "World Cup 2018 Russia Sweep Stake",
+        },
+        "ref": null,
+        "rendered": "World Cup 2018 Russia Sweep Stake",
+        "type": "h1",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "alt": "World Cup 2018 Russia logo",
+          "src": "https://upload.wikimedia.org/wikipedia/en/6/67/2018_FIFA_World_Cup.svg",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "img",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <h1>
+            World Cup 2018 Russia Sweep Stake
+</h1>,
+          <img
+            alt="World Cup 2018 Russia logo"
+            src="https://upload.wikimedia.org/wikipedia/en/6/67/2018_FIFA_World_Cup.svg"
+/>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "World Cup 2018 Russia Sweep Stake",
+          },
+          "ref": null,
+          "rendered": "World Cup 2018 Russia Sweep Stake",
+          "type": "h1",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "alt": "World Cup 2018 Russia logo",
+            "src": "https://upload.wikimedia.org/wikipedia/en/6/67/2018_FIFA_World_Cup.svg",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "img",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
