@@ -6,20 +6,39 @@ import CountryOptions from './CountryOptions/CountryOptions';
 import firebase from '../utils/firebase.js';
 
 class App extends Component {
-  render() {
+  constructor() {
+    super();
+    this.state = {
+      countriesArray: [],
+    };
+  }
 
-    const itemsRef = firebase.database().ref('countries');
-    itemsRef.on('value', (snapshot) => {
-      console.log(snapshot.val());
+  componentDidMount() {
+    this.getCountries();
+  }
+
+  getCountries = () => {
+    const countriesRef = firebase.database().ref('countries');
+    countriesRef.on('value', snapshot => {
+      const countriesObject = snapshot.val();
+      const countriesArray = [];
+
+      for (const country in countriesObject) {
+        const singleCountryObject = countriesObject[country];
+        countriesArray.push(singleCountryObject);
+      }
+
+      this.setState({ countriesArray });
     });
-    
+  };
 
+  render() {
     return (
       <div>
         <Header />
         <Countdown />
         <Rules />
-        <CountryOptions />
+        <CountryOptions countries={this.state.countriesArray} />
       </div>
     );
   }
