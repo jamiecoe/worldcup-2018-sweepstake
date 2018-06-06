@@ -6,3 +6,13 @@ export const objectToArray = object => {
   }
   return array;
 };
+
+export const shuffleArray = arr => {
+  let currentIndex = arr.length, tempValue;
+
+  while (currentIndex > 0) {
+    
+  }
+
+  return arr;
+}
