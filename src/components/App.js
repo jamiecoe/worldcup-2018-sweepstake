@@ -4,12 +4,15 @@ import Countdown from './Countdown';
 import Rules from './Rules';
 import CountryOptions from './CountryOptions/CountryOptions';
 import firebase from '../utils/firebase.js';
+import { objectToArray } from '../helpers/helperFunctions';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      countriesArray: [],
+      topCountriesArray: [],
+      midCountriesArray: [],
+      lowCountriesArray: []
     };
   }
 
@@ -20,15 +23,12 @@ class App extends Component {
   getCountries = () => {
     const countriesRef = firebase.database().ref('countries');
     countriesRef.on('value', snapshot => {
-      const countriesObject = snapshot.val();
-      const countriesArray = [];
-
-      for (const country in countriesObject) {
-        const singleCountryObject = countriesObject[country];
-        countriesArray.push(singleCountryObject);
-      }
-
-      this.setState({ countriesArray });
+      const { top, mid, low } = snapshot.val();
+      this.setState({ 
+        topCountriesArray: objectToArray(top),
+        midCountriesArray: objectToArray(mid),
+        lowCountriesArray: objectToArray(low)
+      });
     });
   };
 
@@ -38,7 +38,11 @@ class App extends Component {
         <Header />
         <Countdown />
         <Rules />
-        <CountryOptions countries={this.state.countriesArray} />
+        <CountryOptions 
+          topCountries={this.state.topCountriesArray} 
+          midCountries={this.state.midCountriesArray}
+          lowCountries={this.state.lowCountriesArray}
+          />
       </div>
     );
   }
