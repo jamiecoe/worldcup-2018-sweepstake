@@ -9,10 +9,17 @@ const StyledDiv = styled.div`
 `
 
 class CountryLevel extends Component {
-  displayCountries = () =>
-    this.props.countries.map(country => (
-      <Country {...country} key={country.name} />
-    ));
+  displayCountries = () => {
+    const { countries } = this.props;  
+    const componentArray = [];
+
+    for (const country in countries) {
+      componentArray.push(<Country {...countries[country]} key={countries[country].name} />);
+    }
+
+    return componentArray;
+  }
+    
 
   render() {
     return (

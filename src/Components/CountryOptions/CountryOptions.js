@@ -1,25 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import CountryLevel from './CountryLevel';
 
-class CountryOptions extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      topCountries: [],
-      midCountries: [],
-      lowCountries: [],
-    };
-  }
-
-  render() {
+const CountryOptions = (props) => {
     return (
       <div>
-        <CountryLevel countries={this.props.topCountries} level="Top" />
-        <CountryLevel countries={this.props.midCountries} level="Mid" />
-        <CountryLevel countries={this.props.lowCountries} level="Low" />
+        <CountryLevel countries={props.topCountries} level="Top" />
+        <CountryLevel countries={props.midCountries} level="Mid" />
+        <CountryLevel countries={props.lowCountries} level="Low" />
       </div>
     );
-  }
 }
 
 export default CountryOptions;
