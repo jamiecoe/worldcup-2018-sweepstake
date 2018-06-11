@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { injectGlobal } from 'styled-components';
+import styled, { injectGlobal } from 'styled-components';
 
 import Header from './Header';
 import Countdown from './Countdown';
@@ -19,6 +19,12 @@ injectGlobal`
   h1, h2, h3 {
     font-family: dusha;
   }
+`;
+
+const CenteredDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 class App extends Component {
@@ -47,13 +53,13 @@ class App extends Component {
     const { countries, players } = this.state;
 
     return (
-      <div>
+      <CenteredDiv>
         <Header />
         <Countdown />
         <Rules />
         <CountryOptions countries={countries} />
         <PlayerList players={players} countries={countries} />
-      </div>
+      </CenteredDiv>
     );
   }
 }
