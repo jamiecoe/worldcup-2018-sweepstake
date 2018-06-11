@@ -4,6 +4,7 @@ import Player from './Player';
 
 const StyledDiv = styled.div`
   display: flex;
+  width: 100%;
   justify-content: space-around;
   text-align: center;
 `;
