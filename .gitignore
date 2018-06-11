@@ -22,3 +22,5 @@ yarn-error.log*
 
 # environment variables
 *.env
+
+assignCountries.mjs

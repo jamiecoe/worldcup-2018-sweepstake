@@ -11,8 +11,7 @@ class App extends Component {
     this.state = {
       topCountries: {},
       midCountries: {},
-      lowCountries: {},
-      players: ['Jamie', 'Ed', 'Idan', 'Midge'],
+      lowCountries: {}
     };
   }
 
@@ -32,31 +31,6 @@ class App extends Component {
       });
     });
   };
-
-  shuffleAndAssignCountryRank = (countries, players, ranking) => {
-    const countryKeys = Object.keys(countries);
-    const shuffledKeys = countryKeys.sort(() => Math.random - 0.5);
-
-    const numCountriesPerPlayer = countries.length / players.length;
-    let playerCounter = 0;
-
-    shuffledKeys.forEach((countryKey, index) => {
-      const owner = players[playerCounter];
-      firebase
-        .database()
-        .ref(`/countries/${ranking}/${countryKey}`)
-        .update({ owner });
-
-      if ((index + 1) % numCountriesPerPlayer === 0) {
-        playerCounter++;
-      }
-    });
-  };
-
-  assignAllCountries = () => {
-    const { players, topCountries, midCountries, lowCountries } = this.state;
-    // this.shuffleAndAssignCountryRank()
-  }
 
   render() {
     return (
