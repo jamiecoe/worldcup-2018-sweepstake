@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { injectGlobal } from 'styled-components';
 
 import Header from './Header';
 import Countdown from './Countdown';
@@ -6,6 +7,19 @@ import Rules from './Rules';
 import CountryOptions from './CountryOptions/CountryOptions';
 import PlayerList from './Players/PlayerList';
 import firebase from '../utils/firebase.js';
+
+import dusha from '../assets/fonts/dusha.ttf';
+
+injectGlobal`
+  @font-face {
+    font-family: 'dusha';
+    src: url(${dusha});
+  }
+
+  h1, h2, h3 {
+    font-family: dusha;
+  }
+`;
 
 class App extends Component {
   constructor() {
@@ -24,7 +38,7 @@ class App extends Component {
     const countriesRef = firebase.database().ref('countries');
     countriesRef.on('value', snapshot => {
       this.setState({
-        countries: snapshot.val()
+        countries: snapshot.val(),
       });
     });
   };
@@ -37,13 +51,8 @@ class App extends Component {
         <Header />
         <Countdown />
         <Rules />
-        <CountryOptions
-          countries={countries}
-        />
-        <PlayerList
-          players={players}
-          countries={countries}
-        />
+        <CountryOptions countries={countries} />
+        <PlayerList players={players} countries={countries} />
       </div>
     );
   }
