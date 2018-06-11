@@ -19,6 +19,10 @@ injectGlobal`
   h1, h2, h3 {
     font-family: dusha;
   }
+
+  p, a, li {
+    font-family: 'Open Sans', sans-serif;
+  }
 `;
 
 const CenteredDiv = styled.div`
