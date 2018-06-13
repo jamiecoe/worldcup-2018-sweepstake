@@ -5,7 +5,7 @@ class Countdown extends Component {
   constructor() {
     super();
     this.state = {
-      endDate: new Date("June 14, 2018 20:00:00").getTime(),
+      endDate: new Date("June 15, 2018 10:00:00").getTime(),
       countDownString: '',
       timer: setInterval(this.countDown, 1000),
       completed: false
