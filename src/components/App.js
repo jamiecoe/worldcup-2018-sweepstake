@@ -20,6 +20,10 @@ injectGlobal`
     font-family: dusha;
   }
 
+  h1 {
+    font-size: 4rem;
+  }
+
   p, a, li {
     font-family: 'Open Sans', sans-serif;
   }
@@ -70,8 +74,8 @@ class App extends Component {
         <Header />
         <Countdown />
         <Rules />
-        <CountryOptions countries={countries} />
         <PlayerList players={players} countries={countries} />
+        <CountryOptions countries={countries} />
       </CenteredDiv>
     );
   }
