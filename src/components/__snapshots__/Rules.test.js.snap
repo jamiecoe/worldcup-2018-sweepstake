@@ -23,7 +23,7 @@ ShallowWrapper {
 </h2>,
         <ul>
           <li>
-                    Each person gets 
+                    Each player gets 
                     <strong>
                               2 top
                     </strong>
@@ -46,7 +46,7 @@ ShallowWrapper {
                     )
           </li>
           <li>
-                    Whoever has the country that wins the World Cup, wins the sweep stake
+                    The player with the country that wins the World Cup, wins the sweep stake
           </li>
 </ul>,
       ],
@@ -71,7 +71,7 @@ ShallowWrapper {
         "props": Object {
           "children": Array [
             <li>
-              Each person gets 
+              Each player gets 
               <strong>
                             2 top
               </strong>
@@ -94,7 +94,7 @@ ShallowWrapper {
               )
 </li>,
             <li>
-              Whoever has the country that wins the World Cup, wins the sweep stake
+              The player with the country that wins the World Cup, wins the sweep stake
 </li>,
           ],
         },
@@ -106,7 +106,7 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": Array [
-                "Each person gets ",
+                "Each player gets ",
                 <strong>
                   2 top
 </strong>,
@@ -131,7 +131,7 @@ ShallowWrapper {
             },
             "ref": null,
             "rendered": Array [
-              "Each person gets ",
+              "Each player gets ",
               Object {
                 "instance": null,
                 "key": undefined,
@@ -191,10 +191,10 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "host",
             "props": Object {
-              "children": "Whoever has the country that wins the World Cup, wins the sweep stake",
+              "children": "The player with the country that wins the World Cup, wins the sweep stake",
             },
             "ref": null,
-            "rendered": "Whoever has the country that wins the World Cup, wins the sweep stake",
+            "rendered": "The player with the country that wins the World Cup, wins the sweep stake",
             "type": "li",
           },
         ],
@@ -215,7 +215,7 @@ ShallowWrapper {
 </h2>,
           <ul>
             <li>
-                        Each person gets 
+                        Each player gets 
                         <strong>
                                     2 top
                         </strong>
@@ -238,7 +238,7 @@ ShallowWrapper {
                         )
             </li>
             <li>
-                        Whoever has the country that wins the World Cup, wins the sweep stake
+                        The player with the country that wins the World Cup, wins the sweep stake
             </li>
 </ul>,
         ],
@@ -263,7 +263,7 @@ ShallowWrapper {
           "props": Object {
             "children": Array [
               <li>
-                Each person gets 
+                Each player gets 
                 <strong>
                                 2 top
                 </strong>
@@ -286,7 +286,7 @@ ShallowWrapper {
                 )
 </li>,
               <li>
-                Whoever has the country that wins the World Cup, wins the sweep stake
+                The player with the country that wins the World Cup, wins the sweep stake
 </li>,
             ],
           },
@@ -298,7 +298,7 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": Array [
-                  "Each person gets ",
+                  "Each player gets ",
                   <strong>
                     2 top
 </strong>,
@@ -323,7 +323,7 @@ ShallowWrapper {
               },
               "ref": null,
               "rendered": Array [
-                "Each person gets ",
+                "Each player gets ",
                 Object {
                   "instance": null,
                   "key": undefined,
@@ -383,10 +383,10 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "host",
               "props": Object {
-                "children": "Whoever has the country that wins the World Cup, wins the sweep stake",
+                "children": "The player with the country that wins the World Cup, wins the sweep stake",
               },
               "ref": null,
-              "rendered": "Whoever has the country that wins the World Cup, wins the sweep stake",
+              "rendered": "The player with the country that wins the World Cup, wins the sweep stake",
               "type": "li",
             },
           ],

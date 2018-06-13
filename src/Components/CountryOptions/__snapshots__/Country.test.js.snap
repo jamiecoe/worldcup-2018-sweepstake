@@ -18,77 +18,46 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "host",
+    "nodeType": "class",
     "props": Object {
       "children": Array [
-        <img
+        <styled.img
           alt="Test Country flag"
           src={undefined}
 />,
-        <h3>
-          Test Country
-</h3>,
+        <styled.div>
+          <h3>
+                    Test Country
+          </h3>
+</styled.div>,
       ],
+      "knockedOut": undefined,
     },
     "ref": null,
     "rendered": Array [
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "host",
+        "nodeType": "class",
         "props": Object {
           "alt": "Test Country flag",
           "src": undefined,
         },
         "ref": null,
         "rendered": null,
-        "type": "img",
+        "type": [Function],
       },
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "host",
+        "nodeType": "class",
         "props": Object {
-          "children": "Test Country",
-        },
-        "ref": null,
-        "rendered": "Test Country",
-        "type": "h3",
-      },
-    ],
-    "type": "div",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": Array [
-          <img
-            alt="Test Country flag"
-            src={undefined}
-/>,
-          <h3>
+          "children": <h3>
             Test Country
 </h3>,
-        ],
-      },
-      "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "alt": "Test Country flag",
-            "src": undefined,
-          },
-          "ref": null,
-          "rendered": null,
-          "type": "img",
         },
-        Object {
+        "ref": null,
+        "rendered": Object {
           "instance": null,
           "key": undefined,
           "nodeType": "host",
@@ -99,8 +68,69 @@ ShallowWrapper {
           "rendered": "Test Country",
           "type": "h3",
         },
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <styled.img
+            alt="Test Country flag"
+            src={undefined}
+/>,
+          <styled.div>
+            <h3>
+                        Test Country
+            </h3>
+</styled.div>,
+        ],
+        "knockedOut": undefined,
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "alt": "Test Country flag",
+            "src": undefined,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <h3>
+              Test Country
+</h3>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Test Country",
+            },
+            "ref": null,
+            "rendered": "Test Country",
+            "type": "h3",
+          },
+          "type": [Function],
+        },
       ],
-      "type": "div",
+      "type": [Function],
     },
   ],
   Symbol(enzyme.__options__): Object {

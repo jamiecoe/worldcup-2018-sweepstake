@@ -15,13 +15,26 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "host",
+    "nodeType": "class",
     "props": Object {
       "children": Array [
         <Header />,
         <Countdown />,
         <Rules />,
-        <CountryOptions />,
+        <PlayerList
+          countries={Object {}}
+          players={
+                    Array [
+                              "Jamie",
+                              "Ed",
+                              "Idan",
+                              "Midge",
+                            ]
+          }
+/>,
+        <CountryOptions
+          countries={Object {}}
+/>,
       ],
     },
     "ref": null,
@@ -57,25 +70,57 @@ ShallowWrapper {
         "instance": null,
         "key": undefined,
         "nodeType": "function",
-        "props": Object {},
+        "props": Object {
+          "countries": Object {},
+          "players": Array [
+            "Jamie",
+            "Ed",
+            "Idan",
+            "Midge",
+          ],
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "countries": Object {},
+        },
         "ref": null,
         "rendered": null,
         "type": [Function],
       },
     ],
-    "type": "div",
+    "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "host",
+      "nodeType": "class",
       "props": Object {
         "children": Array [
           <Header />,
           <Countdown />,
           <Rules />,
-          <CountryOptions />,
+          <PlayerList
+            countries={Object {}}
+            players={
+                        Array [
+                                    "Jamie",
+                                    "Ed",
+                                    "Idan",
+                                    "Midge",
+                                  ]
+            }
+/>,
+          <CountryOptions
+            countries={Object {}}
+/>,
         ],
       },
       "ref": null,
@@ -111,13 +156,32 @@ ShallowWrapper {
           "instance": null,
           "key": undefined,
           "nodeType": "function",
-          "props": Object {},
+          "props": Object {
+            "countries": Object {},
+            "players": Array [
+              "Jamie",
+              "Ed",
+              "Idan",
+              "Midge",
+            ],
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "countries": Object {},
+          },
           "ref": null,
           "rendered": null,
           "type": [Function],
         },
       ],
-      "type": "div",
+      "type": [Function],
     },
   ],
   Symbol(enzyme.__options__): Object {

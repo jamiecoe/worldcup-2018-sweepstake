@@ -4,7 +4,15 @@ exports[`CountryOptions renders properly 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <CountryOptions />,
+  Symbol(enzyme.__unrendered__): <CountryOptions
+    countries={
+        Object {
+            "low": Object {},
+            "mid": Object {},
+            "top": Object {},
+          }
+    }
+/>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -15,16 +23,22 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "host",
+    "nodeType": "class",
     "props": Object {
       "children": Array [
+        <h2>
+          Available teams :
+</h2>,
         <CountryLevel
+          countries={Object {}}
           level="Top"
 />,
         <CountryLevel
+          countries={Object {}}
           level="Mid"
 />,
         <CountryLevel
+          countries={Object {}}
           level="Low"
 />,
       ],
@@ -34,8 +48,20 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Available teams :",
+        },
+        "ref": null,
+        "rendered": "Available teams :",
+        "type": "h2",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
         "nodeType": "class",
         "props": Object {
+          "countries": Object {},
           "level": "Top",
         },
         "ref": null,
@@ -47,6 +73,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
+          "countries": Object {},
           "level": "Mid",
         },
         "ref": null,
@@ -58,6 +85,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
+          "countries": Object {},
           "level": "Low",
         },
         "ref": null,
@@ -65,22 +93,28 @@ ShallowWrapper {
         "type": [Function],
       },
     ],
-    "type": "div",
+    "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "host",
+      "nodeType": "class",
       "props": Object {
         "children": Array [
+          <h2>
+            Available teams :
+</h2>,
           <CountryLevel
+            countries={Object {}}
             level="Top"
 />,
           <CountryLevel
+            countries={Object {}}
             level="Mid"
 />,
           <CountryLevel
+            countries={Object {}}
             level="Low"
 />,
         ],
@@ -90,8 +124,20 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Available teams :",
+          },
+          "ref": null,
+          "rendered": "Available teams :",
+          "type": "h2",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
           "nodeType": "class",
           "props": Object {
+            "countries": Object {},
             "level": "Top",
           },
           "ref": null,
@@ -103,6 +149,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
+            "countries": Object {},
             "level": "Mid",
           },
           "ref": null,
@@ -114,6 +161,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
+            "countries": Object {},
             "level": "Low",
           },
           "ref": null,
@@ -121,7 +169,7 @@ ShallowWrapper {
           "type": [Function],
         },
       ],
-      "type": "div",
+      "type": [Function],
     },
   ],
   Symbol(enzyme.__options__): Object {
