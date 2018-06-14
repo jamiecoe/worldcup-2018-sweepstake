@@ -72,10 +72,10 @@ class App extends Component {
     return (
       <CenteredDiv>
         <Header />
-        <Countdown />
-        <Rules />
+        {/* <Countdown /> */}        
         <PlayerList players={players} countries={countries} />
         <CountryOptions countries={countries} />
+        {/* <Rules /> */}
       </CenteredDiv>
     );
   }
