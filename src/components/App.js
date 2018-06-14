@@ -49,7 +49,7 @@ class App extends Component {
     super();
     this.state = {
       countries: {},
-      players: ['Jamie', 'Ed', 'Idan', 'Midge'],
+      players: [],
     };
   }
 
@@ -58,10 +58,12 @@ class App extends Component {
   }
 
   getCountries = () => {
-    const countriesRef = firebase.database().ref('countries');
-    countriesRef.on('value', snapshot => {
+    const dbRef = firebase.database().ref();    
+    dbRef.on('value', snapshot => {
+      const { countries, players } = snapshot.val();
       this.setState({
-        countries: snapshot.val(),
+        countries,
+        players
       });
     });
   };
