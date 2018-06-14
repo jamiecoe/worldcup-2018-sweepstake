@@ -1,1 +1,1 @@
-export const endDate = new Date('June 10, 2018 12:00:00').getTime();
+export const endDate = new Date('June 10, 2018 08:00:00').getTime();
