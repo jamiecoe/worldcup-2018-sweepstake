@@ -7,6 +7,10 @@ const StyledDiv = styled.div`
   width: 100%;
   justify-content: space-around;
   text-align: center;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
 `;
 
 const PlayerList = props => {

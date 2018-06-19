@@ -5,6 +5,7 @@ import Country from './Country';
 const StyledDiv = styled.div`
   display: flex;
   overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
   box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.3);
   background: white;
 `
