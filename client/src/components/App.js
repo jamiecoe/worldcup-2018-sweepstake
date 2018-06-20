@@ -6,7 +6,6 @@ import Countdown from './Countdown';
 import Rules from './Rules';
 import CountryOptions from './CountryOptions/CountryOptions';
 import PlayerList from './Players/PlayerList';
-import firebase from '../utils/firebase.js';
 
 import dusha from '../assets/fonts/dusha.ttf';
 
@@ -49,7 +48,7 @@ class App extends Component {
     super();
     this.state = {
       countries: {},
-      players: [],
+      players: []
     };
   }
 
@@ -58,14 +57,17 @@ class App extends Component {
   }
 
   getCountries = () => {
-    const dbRef = firebase.database().ref();    
-    dbRef.on('value', snapshot => {
-      const { countries, players } = snapshot.val();
-      this.setState({
-        countries,
-        players
+    fetch(
+      'https://ebjrjto9ae.execute-api.us-east-1.amazonaws.com/production/get-countries'
+    )
+      .then(body => body.json())
+      .then(data => {
+        const { countries, players } = data;
+        this.setState({
+          countries,
+          players
+        });
       });
-    });
   };
 
   render() {
@@ -74,7 +76,7 @@ class App extends Component {
     return (
       <CenteredDiv>
         <Header />
-        {/* <Countdown /> */}        
+        {/* <Countdown /> */}
         <PlayerList players={players} countries={countries} />
         <CountryOptions countries={countries} />
         {/* <Rules /> */}
