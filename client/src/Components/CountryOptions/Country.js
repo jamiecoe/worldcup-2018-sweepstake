@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 const StyledDiv = styled.div`
   margin: 10px;
   text-align: center;
-  position: relative;  
+  position: relative;
   min-width: 240px;
   min-height: 125px;
 
@@ -46,8 +46,16 @@ const OverlayDiv = styled.div`
 
 const StyledImg = styled.img`
   box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.3);
-  height: 100%;  
+  height: 100%;
   width: 100%;
+`;
+
+const StyledH3 = styled.h3`
+  ${props =>
+    props.knockedOut &&
+    css`
+      text-decoration: line-through;
+    `};
 `;
 
 const Country = props => {
@@ -55,7 +63,7 @@ const Country = props => {
     <StyledDiv knockedOut={props.knockedOut}>
       <StyledImg src={props.imgUrl} alt={`${props.name} flag`} />
       <OverlayDiv>
-        <h3>{props.name}</h3>
+        <StyledH3 knockedOut={props.knockedOut}>{props.name}</StyledH3>
       </OverlayDiv>
     </StyledDiv>
   );
