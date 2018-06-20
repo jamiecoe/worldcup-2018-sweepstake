@@ -55,6 +55,7 @@ const StyledH3 = styled.h3`
     props.knockedOut &&
     css`
       text-decoration: line-through;
+      color: rgba(255, 255, 255, 0.6)
     `};
 `;
 
