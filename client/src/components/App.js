@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled, { injectGlobal } from 'styled-components';
 
 import Header from './Header';
@@ -43,46 +43,17 @@ const CenteredDiv = styled.div`
   align-items: center;
 `;
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      countries: {},
-      players: []
-    };
-  }
-
-  componentDidMount() {
-    this.getCountries();
-  }
-
-  getCountries = () => {
-    fetch(
-      'https://ebjrjto9ae.execute-api.us-east-1.amazonaws.com/production/get-countries'
-    )
-      .then(body => body.json())
-      .then(data => {
-        const { countries, players } = data;
-        this.setState({
-          countries,
-          players
-        });
-      });
-  };
-
-  render() {
-    const { countries, players } = this.state;
-
-    return (
-      <CenteredDiv>
-        <Header />
-        {/* <Countdown /> */}
-        <PlayerList players={players} countries={countries} />
-        <CountryOptions countries={countries} />
-        {/* <Rules /> */}
-      </CenteredDiv>
-    );
-  }
-}
+const App = props => {
+  const { countries, players } = props;
+  return (
+    <CenteredDiv>
+      <Header />
+      {/* <Countdown /> */}
+      <PlayerList players={players} countries={countries} />
+      <CountryOptions countries={countries} />
+      {/* <Rules /> */}
+    </CenteredDiv>
+  );
+};
 
 export default App;

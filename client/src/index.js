@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './Components/App';
+import getData from './HOC/getData';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const AppWithData = getData(App);
+
+ReactDOM.render(<AppWithData />, document.getElementById('root'));
 registerServiceWorker();
