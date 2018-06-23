@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import firebase from '../utils/firebase';
 
 const getData = WrappedComponent => {
   return class extends Component {
@@ -9,33 +10,27 @@ const getData = WrappedComponent => {
         players: []
       };
     }
-  
+
     componentDidMount() {
       this.getCountries();
     }
-  
+
     getCountries = () => {
-      fetch(
-        'https://ebjrjto9ae.execute-api.us-east-1.amazonaws.com/production/get-countries'
-      )
-        .then(body => body.json())
-        .then(data => {
-          const { countries, players } = data;
-          this.setState({
-            countries,
-            players
-          });
+      const dbRef = firebase.database().ref();
+      dbRef.on('value', snapshot => {
+        const { countries, players } = snapshot.val();
+        this.setState({
+          countries,
+          players
         });
-    };  
+      });
+    };
 
     render() {
       const { countries, players } = this.state;
-
-      return (
-        <WrappedComponent countries={countries} players={players} />
-      )
+      return <WrappedComponent countries={countries} players={players} />;
     }
-  }
-}
+  };
+};
 
 export default getData;
