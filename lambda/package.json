@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "main": "handler.js",
   "license": "MIT",
+  "scripts": {
+    "deploy": "serverless deploy",
+    "updateCountries:runlocal": "serverless invoke local --function updateCountries"
+  },
   "dependencies": {
     "firebase-admin": "^5.12.1",
     "request": "^2.87.0",
