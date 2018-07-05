@@ -5,12 +5,15 @@
   "license": "MIT",
   "scripts": {
     "deploy": "serverless deploy",
-    "updateCountries:runlocal": "serverless invoke local --function updateCountries"
+    "updateCountries:runlocal": "serverless invoke local --function updateCountries",
+    "test": "jest"
   },
   "dependencies": {
     "firebase-admin": "^5.12.1",
     "request": "^2.87.0",
     "request-promise": "^4.2.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "jest": "^23.3.0"
+  }
 }

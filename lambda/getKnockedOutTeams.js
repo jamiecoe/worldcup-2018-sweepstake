@@ -28,4 +28,4 @@ const getKnockedOutTeamsPromise = () => {
   return request(options).then(data => findKnockedOutTeams(data));
 };
 
-module.exports = { getKnockedOutTeamsPromise };
+module.exports = { getKnockedOutTeamsPromise, findKnockedOutTeams };

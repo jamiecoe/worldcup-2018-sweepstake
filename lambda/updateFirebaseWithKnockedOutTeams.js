@@ -28,6 +28,18 @@ const writeUpdateToFirebase = (countries, dbRef) => {
     });
 };
 
+const updateCountriesWithKnockOutStatus = countryLevels =>
+  Object.keys(countryLevels).reduce(
+    (acc, countryLevel) =>
+      Object.assign(acc, {
+        [countryLevel]: updateCountryLevel(
+          countryLevels[countryLevel],
+          knockedOutTeams
+        )
+      }),
+    {}
+  );
+
 const updateFirebaseWithKnockedOutTeams = (
   knockedOutTeams,
   snapshot,
@@ -40,18 +52,12 @@ const updateFirebaseWithKnockedOutTeams = (
     return 'no teams to update';
   }
 
-  const { countries } = snapshot.val();
-  const countryLevelsArray = Object.keys(countries);
+  const { countries: countryLevels } = snapshot.val();
 
-  countryLevelsArray.forEach(countryLevel => {
-    const countryLevelDataArray = countries[countryLevel];
-    countries[countryLevel] = updateCountryLevel(
-      countryLevelDataArray,
-      knockedOutTeams
-    );
-  });
-
-  writeUpdateToFirebase(countries, dbRef);
+  writeUpdateToFirebase(
+    updateCountriesWithKnockOutStatus(countryLevels),
+    dbRef
+  );
 
   return 'finished updating';
 };
