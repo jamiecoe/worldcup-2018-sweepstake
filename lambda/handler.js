@@ -1,7 +1,7 @@
 'use strict';
-const { getKnockedOutTeamsPromise } = require('./getKnockedOutTeams');
-const updateFirebaseWithKnockedOutTeams = require('./updateFirebaseWithKnockedOutTeams');
-const { getFirebaseDataPromise, getFirebaseRef } = require('./firebaseHelperFunctions');
+const { getKnockedOutTeamsPromise } = require('./updateCountries/getKnockedOutTeams');
+const updateFirebaseWithKnockedOutTeams = require('./updateCountries/updateFirebaseWithKnockedOutTeams');
+const { getFirebaseDataPromise, getFirebaseRef } = require('./firebase/firebaseHelperFunctions');
 
 module.exports.updateCountries = (event, context, callback) => {
   Promise.all([getKnockedOutTeamsPromise(), getFirebaseDataPromise()])

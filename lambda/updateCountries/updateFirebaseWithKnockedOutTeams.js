@@ -1,4 +1,4 @@
-const { closeFirebaseConnection } = require('./firebaseHelperFunctions');
+const { closeFirebaseConnection } = require('../firebase/firebaseHelperFunctions');
 
 const updateCountryLevel = (countryLevelDataArray, knockedOutTeams) => {
   return countryLevelDataArray.map(countryData => {
