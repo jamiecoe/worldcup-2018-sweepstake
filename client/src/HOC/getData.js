@@ -1,33 +1,38 @@
 import React, { Component } from 'react';
 import firebase from '../utils/firebase';
+import { isEmpty } from 'lodash';
 
 const getData = WrappedComponent => {
   return class extends Component {
     constructor() {
       super();
-      this.state = {
-        countries: {},
-        players: []
-      };
+      this.state = {};
     }
 
     componentDidMount() {
-      this.getCountries();
+      this.getData();
     }
 
-    getCountries = () => {
+    getData = () => {
       const dbRef = firebase.database().ref();
       dbRef.on('value', snapshot => {
         const { countries, players } = snapshot.val();
-        this.setState({
-          countries,
-          players
-        });
+        setTimeout(() => {
+          this.setState({
+            countries,
+            players
+          });
+        }, 5000);
       });
     };
 
     render() {
+      if (isEmpty(this.state)) {
+        return <span>Loading...</span>
+      }
+
       const { countries, players } = this.state;
+
       return <WrappedComponent countries={countries} players={players} />;
     }
   };
