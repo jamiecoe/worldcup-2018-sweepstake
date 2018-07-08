@@ -1,32 +1,37 @@
-const { closeFirebaseConnection } = require('../firebase/firebaseHelperFunctions')
+const {
+  closeFirebaseConnection: _closeFirebaseConnection
+} = require('../firebase/firebaseHelperFunctions')
 
-const updateCountryLevel = (countryLevelDataArray, knockedOutTeams) => {
-  return countryLevelDataArray.map(countryData => {
+const updateCountryLevel = (countryLevelDataArray, knockedOutTeams) =>
+  countryLevelDataArray.map(countryData => {
     const { name } = countryData
 
-    if (knockedOutTeams.includes(name)) {
-      countryData.knockedOut = true
+    if (knockedOutTeams.includes(name) && !countryData.knockedOut) {
+      const newCountryData = Object.assign({}, countryData)
+      newCountryData.knockedOut = true
+      return newCountryData
     }
 
     return countryData
   })
-}
 
-const writeUpdateToFirebase = (countries, dbRef) => {
-  console.log('Updating firebase...')
+const writeUpdateToFirebase = (
+  countries,
+  dbRef,
+  closeFirebaseConnection = _closeFirebaseConnection
+) =>
   dbRef
     .update({
       '/countries': countries
     })
     .then(() => {
       closeFirebaseConnection()
-      console.log('teams updated 👍')
+      return 'teams updated 👍'
     })
     .catch(err => {
       closeFirebaseConnection()
-      console.log('Error with Firebase update =', err)
+      return Promise.reject(err)
     })
-}
 
 const updateCountriesWithKnockOutStatus = (countryLevels, knockedOutTeams) =>
   Object.keys(countryLevels).reduce(
@@ -43,10 +48,10 @@ const updateCountriesWithKnockOutStatus = (countryLevels, knockedOutTeams) =>
 const updateFirebaseWithKnockedOutTeams = (
   knockedOutTeams,
   snapshot,
-  dbRef
+  dbRef,
+  closeFirebaseConnection = _closeFirebaseConnection
 ) => {
   console.log('knockedOutTeams', knockedOutTeams)
-
   if (knockedOutTeams.length < 1) {
     closeFirebaseConnection()
     return 'no teams to update'
@@ -54,12 +59,15 @@ const updateFirebaseWithKnockedOutTeams = (
 
   const { countries: countryLevels } = snapshot.val()
 
-  writeUpdateToFirebase(
+  return writeUpdateToFirebase(
     updateCountriesWithKnockOutStatus(countryLevels, knockedOutTeams),
     dbRef
   )
-
-  return 'finished updating'
 }
 
-module.exports = updateFirebaseWithKnockedOutTeams
+module.exports = {
+  updateFirebaseWithKnockedOutTeams,
+  updateCountriesWithKnockOutStatus,
+  writeUpdateToFirebase,
+  updateCountryLevel
+}
