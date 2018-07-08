@@ -46,13 +46,14 @@ provider:
 	
 
 # you can add packaging information here
-#package:
+package:
 #  include:
 #    - include-me.js
 #    - include-me-dir/**
-#  exclude:
-#    - exclude-me.js
-#    - exclude-me-dir/**
+  exclude:
+    - updateCountries/*.test.js
+    - coverage/**
+
 
 functions:
   updateCountries:
