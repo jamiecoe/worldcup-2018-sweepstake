@@ -1,7 +1,7 @@
 'use strict'
 
 const { getKnockedOutTeamsPromise } = require('./updateCountries/getKnockedOutTeams')
-const updateFirebaseWithKnockedOutTeams = require('./updateCountries/updateFirebaseWithKnockedOutTeams')
+const { updateFirebaseWithKnockedOutTeams } = require('./updateCountries/updateFirebaseWithKnockedOutTeams')
 const { getFirebaseDataPromise, getFirebaseRef } = require('./firebase/firebaseHelperFunctions')
 
 module.exports.updateCountries = (event, context, callback) => {
@@ -18,6 +18,7 @@ module.exports.updateCountries = (event, context, callback) => {
       callback(null, 'Lambda complete!')
     })
     .catch(err => {
+      console.log('Lambda failed!')
       callback(err)
     })
 }
