@@ -1,33 +1,24 @@
-const request = require('request-promise');
+const { requestJson: _requestJson } = require('../utils/request')
 
 const findKnockedOutTeams = data => {
   if (data.length < 1) {
-    return [];
+    return []
   }
 
   return data
     .map(game => {
-      const { home_team_country: home, away_team_country: away, winner } = game;
-
+      const { home_team_country: home, away_team_country: away, winner } = game
       if (winner !== null) {
-        const loser = winner !== home ? home : away;
-        return loser;
+        const loser = winner !== home ? home : away
+        return loser
       }
-
-      return null;
+      return null
     })
-    .filter(Boolean);
-};
+    .filter(Boolean)
+}
 
-const getKnockedOutTeamsPromise = () => {
-  const worldCupApiUrl = 'https://worldcup.sfg.io/matches/today';
+const getKnockedOutTeamsPromise = (requestJson = _requestJson) =>
+  requestJson('https://worldcup.sfg.io/matches/today')
+    .then(data => findKnockedOutTeams(data))
 
-  const options = {
-    uri: worldCupApiUrl,
-    json: true
-  };
-
-  return request(options).then(data => findKnockedOutTeams(data));
-};
-
-module.exports = { getKnockedOutTeamsPromise, findKnockedOutTeams };
+module.exports = { getKnockedOutTeamsPromise, findKnockedOutTeams }
