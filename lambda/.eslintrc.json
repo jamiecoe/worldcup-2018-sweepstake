@@ -1,9 +1,6 @@
 {
-  "extends": "airbnb-base",
-  "rules": {
-    "arrow-parens": ["error", "as-needed", { "requireForBlockBody": false }],
-    "comma-dangle": ["error", "never"]
-  },
+  "extends": "standard",
+  "rules": {},
   "env": {
     "jest": true
   }

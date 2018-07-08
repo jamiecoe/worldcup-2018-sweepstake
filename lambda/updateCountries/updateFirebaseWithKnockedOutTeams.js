@@ -1,34 +1,34 @@
-const { closeFirebaseConnection } = require('../firebase/firebaseHelperFunctions');
+const { closeFirebaseConnection } = require('../firebase/firebaseHelperFunctions')
 
 const updateCountryLevel = (countryLevelDataArray, knockedOutTeams) => {
   return countryLevelDataArray.map(countryData => {
-    const { name } = countryData;
+    const { name } = countryData
 
     if (knockedOutTeams.includes(name)) {
-      countryData.knockedOut = true;
+      countryData.knockedOut = true
     }
 
-    return countryData;
-  });
-};
+    return countryData
+  })
+}
 
 const writeUpdateToFirebase = (countries, dbRef) => {
-  console.log('Updating firebase...');
+  console.log('Updating firebase...')
   dbRef
     .update({
       '/countries': countries
     })
     .then(() => {
-      closeFirebaseConnection();
-      console.log('teams updated 👍');
+      closeFirebaseConnection()
+      console.log('teams updated 👍')
     })
     .catch(err => {
-      closeFirebaseConnection();
-      console.log('Error with Firebase update =', err);
-    });
-};
+      closeFirebaseConnection()
+      console.log('Error with Firebase update =', err)
+    })
+}
 
-const updateCountriesWithKnockOutStatus = countryLevels =>
+const updateCountriesWithKnockOutStatus = (countryLevels, knockedOutTeams) =>
   Object.keys(countryLevels).reduce(
     (acc, countryLevel) =>
       Object.assign(acc, {
@@ -38,28 +38,28 @@ const updateCountriesWithKnockOutStatus = countryLevels =>
         )
       }),
     {}
-  );
+  )
 
 const updateFirebaseWithKnockedOutTeams = (
   knockedOutTeams,
   snapshot,
   dbRef
 ) => {
-  console.log('knockedOutTeams', knockedOutTeams);
+  console.log('knockedOutTeams', knockedOutTeams)
 
   if (knockedOutTeams.length < 1) {
-    closeFirebaseConnection();
-    return 'no teams to update';
+    closeFirebaseConnection()
+    return 'no teams to update'
   }
 
-  const { countries: countryLevels } = snapshot.val();
+  const { countries: countryLevels } = snapshot.val()
 
   writeUpdateToFirebase(
-    updateCountriesWithKnockOutStatus(countryLevels),
+    updateCountriesWithKnockOutStatus(countryLevels, knockedOutTeams),
     dbRef
-  );
+  )
 
-  return 'finished updating';
-};
+  return 'finished updating'
+}
 
-module.exports = updateFirebaseWithKnockedOutTeams;
+module.exports = updateFirebaseWithKnockedOutTeams
