@@ -8,10 +8,10 @@ const closeFirebaseConnection = () => {
 
 const getFirebaseRef = () => admin.database().ref()
 
-const getFirebaseDataPromise = () => {
-  const firebaseRef = getFirebaseRef()
-  firebaseRef.once('value').then(snapshot => snapshot)
-}
+const getFirebaseDataPromise = () =>
+  getFirebaseRef()
+    .once('value')
+    .then(snapshot => snapshot)
 
 module.exports = {
   closeFirebaseConnection,
