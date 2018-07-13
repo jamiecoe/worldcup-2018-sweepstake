@@ -22,5 +22,12 @@
     "jest": "^23.3.0",
     "jest-fetch-mock": "^1.6.5",
     "sinon": "^6.1.2"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "firebase/**/*.js",
+      "updateCountries/**/*.js",
+      "!utils/request.js"
+    ]
   }
 }
