@@ -53,39 +53,42 @@ describe('getKnockedOutTeams', () => {
   })
 
   describe('getKnockedOutTeamsPromise', () => {
-    it('should return a promise which resolves to an array of knocked out teams, if winner is available', () => {
+    it('should return a promise which resolves to an array of knocked out teams, if winner is available', (done) => {
       const mockRequestJson = sinon.stub()
       mockRequestJson.resolves(mockApiData)
 
       const expected = ['away_team_country_1', 'home_team_country_2']
 
-      return getKnockedOutTeamsPromise(mockRequestJson).then(knockedOutTeam => {
+      getKnockedOutTeamsPromise(mockRequestJson).then(knockedOutTeam => {
         expect(mockRequestJson.calledOnce).toBe(true)
         expect(knockedOutTeam).toEqual(expected)
+        done()
       })
     })
 
-    it('should return a promise which resolves to an empty array, if winner is unavailable', () => {
+    it('should return a promise which resolves to an empty array, if winner is unavailable', (done) => {
       const mockRequestJson = sinon.stub()
       mockRequestJson.resolves(mockApiDataWinnerUndecided)
 
       const expected = []
 
-      return getKnockedOutTeamsPromise(mockRequestJson).then(knockedOutTeam => {
+      getKnockedOutTeamsPromise(mockRequestJson).then(knockedOutTeam => {
         expect(mockRequestJson.calledOnce).toBe(true)
         expect(knockedOutTeam).toEqual(expected)
+        done()
       })
     })
 
-    it('should return a promise which resolves to an empty array, if data is empty', () => {
+    it('should return a promise which resolves to an empty array, if data is empty', (done) => {
       const mockRequestJson = sinon.stub()
       mockRequestJson.resolves(mockApiDataEmpty)
 
       const expected = []
 
-      return getKnockedOutTeamsPromise(mockRequestJson).then(knockedOutTeam => {
+      getKnockedOutTeamsPromise(mockRequestJson).then(knockedOutTeam => {
         expect(mockRequestJson.calledOnce).toBe(true)
         expect(knockedOutTeam).toEqual(expected)
+        done()
       })
     })
   })
