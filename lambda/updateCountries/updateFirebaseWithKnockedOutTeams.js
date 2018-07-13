@@ -61,7 +61,8 @@ const updateFirebaseWithKnockedOutTeams = (
 
   return writeUpdateToFirebase(
     updateCountriesWithKnockOutStatus(countryLevels, knockedOutTeams),
-    dbRef
+    dbRef,
+    closeFirebaseConnection
   )
 }
 
