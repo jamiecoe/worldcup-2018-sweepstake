@@ -1,17 +1,18 @@
 const firebaseConfig = require('./firebaseConfig')
-const admin = require('firebase-admin').initializeApp(firebaseConfig)
+const _admin = require('firebase-admin').initializeApp(firebaseConfig)
 
-const closeFirebaseConnection = () => {
+const closeFirebaseConnection = (admin = _admin) => {
   console.log('closing firebase connection')
   admin.delete()
 }
 
-const getFirebaseRef = () => admin.database().ref()
+const getFirebaseRef = (admin = _admin) => admin.database().ref()
 
-const getFirebaseDataPromise = () =>
-  getFirebaseRef()
+const getFirebaseDataPromise = (_getFirebaseRef = getFirebaseRef) =>
+  _getFirebaseRef()
     .once('value')
     .then(snapshot => snapshot)
+    .catch(err => Promise.reject(err))
 
 module.exports = {
   closeFirebaseConnection,
