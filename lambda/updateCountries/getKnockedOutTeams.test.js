@@ -34,61 +34,96 @@ describe('getKnockedOutTeams', () => {
   const mockApiDataEmpty = []
 
   describe('findKnockedOutTeams', () => {
-    it('should return an array with the knockedOut countries', () => {
-      const expected = ['away_team_country_1', 'home_team_country_2']
+    describe('if winner of match is available', () => {
+      it('should return an array with the knockedOut countries', () => {
+        const expected = ['away_team_country_1', 'home_team_country_2']
 
-      expect(findKnockedOutTeams(mockApiData)).toEqual(expected)
+        expect(findKnockedOutTeams(mockApiData)).toEqual(expected)
+      })
     })
 
-    it('should return an empty array if data is empty', () => {
-      const expected = []
-      expect(findKnockedOutTeams(mockApiDataEmpty)).toEqual(expected)
+    describe('if winner of match is unavailable', () => {
+      it('should return an empty array', () => {
+        const expected = []
+
+        expect(findKnockedOutTeams(mockApiDataWinnerUndecided)).toEqual(
+          expected
+        )
+      })
     })
 
-    it('should return an empty array if a winner has not been decided yet', () => {
-      const expected = []
-
-      expect(findKnockedOutTeams(mockApiDataWinnerUndecided)).toEqual(expected)
+    describe('if api data is empty', () => {
+      it('should return an empty array', () => {
+        const expected = []
+        expect(findKnockedOutTeams(mockApiDataEmpty)).toEqual(expected)
+      })
     })
   })
 
   describe('getKnockedOutTeamsPromise', () => {
-    it('should return a promise which resolves to an array of knocked out teams, if winner is available', (done) => {
-      const mockRequestJson = sinon.stub()
-      mockRequestJson.resolves(mockApiData)
+    describe('if winner of match is available', () => {
+      it('should return a promise which resolves to an array of knocked out teams', done => {
+        const mockRequestJson = sinon.stub()
+        mockRequestJson.resolves(mockApiData)
 
-      const expected = ['away_team_country_1', 'home_team_country_2']
+        const expected = ['away_team_country_1', 'home_team_country_2']
 
-      getKnockedOutTeamsPromise(mockRequestJson).then(knockedOutTeam => {
-        expect(mockRequestJson.calledOnce).toBe(true)
-        expect(knockedOutTeam).toEqual(expected)
-        done()
+        getKnockedOutTeamsPromise(mockRequestJson)
+          .then(knockedOutTeam => {
+            expect(mockRequestJson.calledOnce).toBe(true)
+            expect(knockedOutTeam).toEqual(expected)
+            done()
+          })
+          .catch(done)
       })
     })
 
-    it('should return a promise which resolves to an empty array, if winner is unavailable', (done) => {
-      const mockRequestJson = sinon.stub()
-      mockRequestJson.resolves(mockApiDataWinnerUndecided)
+    describe('if winner of match is unavailable', () => {
+      it('should return a promise which resolves to an empty array', done => {
+        const mockRequestJson = sinon.stub()
+        mockRequestJson.resolves(mockApiDataWinnerUndecided)
 
-      const expected = []
+        const expected = []
 
-      getKnockedOutTeamsPromise(mockRequestJson).then(knockedOutTeam => {
-        expect(mockRequestJson.calledOnce).toBe(true)
-        expect(knockedOutTeam).toEqual(expected)
-        done()
+        getKnockedOutTeamsPromise(mockRequestJson)
+          .then(knockedOutTeam => {
+            expect(mockRequestJson.calledOnce).toBe(true)
+            expect(knockedOutTeam).toEqual(expected)
+            done()
+          })
+          .catch(done)
       })
     })
 
-    it('should return a promise which resolves to an empty array, if data is empty', (done) => {
-      const mockRequestJson = sinon.stub()
-      mockRequestJson.resolves(mockApiDataEmpty)
+    describe('if api data is empty', () => {
+      it('should return a promise which resolves to an empty array', done => {
+        const mockRequestJson = sinon.stub()
+        mockRequestJson.resolves(mockApiDataEmpty)
 
-      const expected = []
+        const expected = []
 
-      getKnockedOutTeamsPromise(mockRequestJson).then(knockedOutTeam => {
-        expect(mockRequestJson.calledOnce).toBe(true)
-        expect(knockedOutTeam).toEqual(expected)
-        done()
+        getKnockedOutTeamsPromise(mockRequestJson)
+          .then(knockedOutTeam => {
+            expect(mockRequestJson.calledOnce).toBe(true)
+            expect(knockedOutTeam).toEqual(expected)
+            done()
+          })
+          .catch(done)
+      })
+    })
+
+    describe('if the request throws an error', () => {
+      it('should return a rejected promise', done => {
+        const mockRequestJson = sinon.stub()
+        const testError = new Error('this is a test error')
+        mockRequestJson.rejects(testError)
+
+        getKnockedOutTeamsPromise(mockRequestJson)
+          .then(done)
+          .catch(err => {
+            expect(err).toBe(testError)
+            done()
+          })
       })
     })
   })

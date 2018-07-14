@@ -20,5 +20,6 @@ const findKnockedOutTeams = data => {
 const getKnockedOutTeamsPromise = (requestJson = _requestJson) =>
   requestJson('https://worldcup.sfg.io/matches/today')
     .then(data => findKnockedOutTeams(data))
+    .catch(err => Promise.reject(err))
 
 module.exports = { getKnockedOutTeamsPromise, findKnockedOutTeams }

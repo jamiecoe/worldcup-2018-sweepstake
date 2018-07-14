@@ -43,12 +43,14 @@ describe('firebaseHelperFunctions', () => {
         mockGetFirebaseRef.returns({ once: mockOnce })
         mockOnce.withArgs('value').resolves(mockSnapshot)
 
-        getFirebaseDataPromise(mockGetFirebaseRef).then(snapshot => {
-          expect(mockGetFirebaseRef.calledOnce).toBe(true)
-          expect(mockOnce.calledOnceWithExactly('value')).toBe(true)
-          expect(snapshot).toBe(mockSnapshot)
-          done()
-        })
+        getFirebaseDataPromise(mockGetFirebaseRef)
+          .then(snapshot => {
+            expect(mockGetFirebaseRef.calledOnce).toBe(true)
+            expect(mockOnce.calledOnceWithExactly('value')).toBe(true)
+            expect(snapshot).toBe(mockSnapshot)
+            done()
+          })
+          .catch(done)
       })
     })
 
@@ -61,12 +63,14 @@ describe('firebaseHelperFunctions', () => {
         mockGetFirebaseRef.returns({ once: mockOnce })
         mockOnce.withArgs('value').rejects(testError)
 
-        getFirebaseDataPromise(mockGetFirebaseRef).catch(err => {
-          expect(mockGetFirebaseRef.calledOnce).toBe(true)
-          expect(mockOnce.calledOnceWithExactly('value')).toBe(true)
-          expect(err).toBe(testError)
-          done()
-        })
+        getFirebaseDataPromise(mockGetFirebaseRef)
+          .then(done)
+          .catch(err => {
+            expect(mockGetFirebaseRef.calledOnce).toBe(true)
+            expect(mockOnce.calledOnceWithExactly('value')).toBe(true)
+            expect(err).toBe(testError)
+            done()
+          })
       })
     })
   })

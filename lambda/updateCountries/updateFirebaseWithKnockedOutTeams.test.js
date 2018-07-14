@@ -95,12 +95,14 @@ describe('updateFirebaseWithKnockedOutTeams', () => {
           mockCountries,
           mockDbRef,
           mockCloseFirebaseConnection
-        ).then(confirmationMsg => {
-          expect(confirmationMsg).toBe('teams updated 👍')
-          expect(mockDbRef.update.calledOnce).toBe(true)
-          expect(mockCloseFirebaseConnection.calledOnce).toBe(true)
-          done()
-        })
+        )
+          .then(confirmationMsg => {
+            expect(confirmationMsg).toBe('teams updated 👍')
+            expect(mockDbRef.update.calledOnce).toBe(true)
+            expect(mockCloseFirebaseConnection.calledOnce).toBe(true)
+            done()
+          })
+          .catch(done)
       })
     })
 
@@ -118,12 +120,14 @@ describe('updateFirebaseWithKnockedOutTeams', () => {
           mockCountries,
           mockDbRef,
           mockCloseFirebaseConnection
-        ).catch(err => {
-          expect(err).toBe(testError)
-          expect(mockDbRef.update.calledOnce).toBe(true)
-          expect(mockCloseFirebaseConnection.calledOnce).toBe(true)
-          done()
-        })
+        )
+          .then(done)
+          .catch(err => {
+            expect(err).toBe(testError)
+            expect(mockDbRef.update.calledOnce).toBe(true)
+            expect(mockCloseFirebaseConnection.calledOnce).toBe(true)
+            done()
+          })
       })
     })
   })
@@ -211,13 +215,15 @@ describe('updateFirebaseWithKnockedOutTeams', () => {
           mockSnapshot,
           mockDbRef,
           mockCloseFirebaseConnection
-        ).then(confirmationMsg => {
-          expect(mockSnapshot.val.calledOnce).toBe(true)
-          expect(mockDbRef.update.calledOnce).toBe(true)
-          expect(mockCloseFirebaseConnection.calledOnce).toBe(true)
-          expect(confirmationMsg).toBe('teams updated 👍')
-          done()
-        })
+        )
+          .then(confirmationMsg => {
+            expect(mockSnapshot.val.calledOnce).toBe(true)
+            expect(mockDbRef.update.calledOnce).toBe(true)
+            expect(mockCloseFirebaseConnection.calledOnce).toBe(true)
+            expect(confirmationMsg).toBe('teams updated 👍')
+            done()
+          })
+          .catch(done)
       })
     })
 
@@ -237,13 +243,15 @@ describe('updateFirebaseWithKnockedOutTeams', () => {
           mockSnapshot,
           mockDbRef,
           mockCloseFirebaseConnection
-        ).catch(err => {
-          expect(mockSnapshot.val.calledOnce).toBe(true)
-          expect(mockDbRef.update.calledOnce).toBe(true)
-          expect(mockCloseFirebaseConnection.calledOnce).toBe(true)
-          expect(err).toBe(testError)
-          done()
-        })
+        )
+          .then(done)
+          .catch(err => {
+            expect(mockSnapshot.val.calledOnce).toBe(true)
+            expect(mockDbRef.update.calledOnce).toBe(true)
+            expect(mockCloseFirebaseConnection.calledOnce).toBe(true)
+            expect(err).toBe(testError)
+            done()
+          })
       })
     })
   })
