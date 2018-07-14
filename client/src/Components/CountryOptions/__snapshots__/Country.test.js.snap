@@ -6,6 +6,7 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Country
     imageUrl="https://test.com/test-image.jpg"
+    knockedOut={false}
     name="Test Country"
 />,
   Symbol(enzyme.__renderer__): Object {
@@ -26,12 +27,14 @@ ShallowWrapper {
           src={undefined}
 />,
         <styled.div>
-          <h3>
+          <styled.h3
+                    knockedOut={false}
+          >
                     Test Country
-          </h3>
+          </styled.h3>
 </styled.div>,
       ],
-      "knockedOut": undefined,
+      "knockedOut": false,
     },
     "ref": null,
     "rendered": Array [
@@ -52,21 +55,24 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "children": <h3>
+          "children": <styled.h3
+            knockedOut={false}
+>
             Test Country
-</h3>,
+</styled.h3>,
         },
         "ref": null,
         "rendered": Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "host",
+          "nodeType": "class",
           "props": Object {
             "children": "Test Country",
+            "knockedOut": false,
           },
           "ref": null,
           "rendered": "Test Country",
-          "type": "h3",
+          "type": [Function],
         },
         "type": [Function],
       },
@@ -85,12 +91,14 @@ ShallowWrapper {
             src={undefined}
 />,
           <styled.div>
-            <h3>
+            <styled.h3
+                        knockedOut={false}
+            >
                         Test Country
-            </h3>
+            </styled.h3>
 </styled.div>,
         ],
-        "knockedOut": undefined,
+        "knockedOut": false,
       },
       "ref": null,
       "rendered": Array [
@@ -111,21 +119,24 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "children": <h3>
+            "children": <styled.h3
+              knockedOut={false}
+>
               Test Country
-</h3>,
+</styled.h3>,
           },
           "ref": null,
           "rendered": Object {
             "instance": null,
             "key": undefined,
-            "nodeType": "host",
+            "nodeType": "class",
             "props": Object {
               "children": "Test Country",
+              "knockedOut": false,
             },
             "ref": null,
             "rendered": "Test Country",
-            "type": "h3",
+            "type": [Function],
           },
           "type": [Function],
         },

@@ -4,7 +4,10 @@ exports[`App renders properly 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <App />,
+  Symbol(enzyme.__unrendered__): <App
+    countries={Object {}}
+    players={Array []}
+/>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -19,18 +22,9 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <Header />,
-        <Countdown />,
-        <Rules />,
         <PlayerList
           countries={Object {}}
-          players={
-                    Array [
-                              "Jamie",
-                              "Ed",
-                              "Idan",
-                              "Midge",
-                            ]
-          }
+          players={Array []}
 />,
         <CountryOptions
           countries={Object {}}
@@ -51,33 +45,10 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "class",
-        "props": Object {},
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "function",
-        "props": Object {},
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
         "nodeType": "function",
         "props": Object {
           "countries": Object {},
-          "players": Array [
-            "Jamie",
-            "Ed",
-            "Idan",
-            "Midge",
-          ],
+          "players": Array [],
         },
         "ref": null,
         "rendered": null,
@@ -105,18 +76,9 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <Header />,
-          <Countdown />,
-          <Rules />,
           <PlayerList
             countries={Object {}}
-            players={
-                        Array [
-                                    "Jamie",
-                                    "Ed",
-                                    "Idan",
-                                    "Midge",
-                                  ]
-            }
+            players={Array []}
 />,
           <CountryOptions
             countries={Object {}}
@@ -137,33 +99,10 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
-          "props": Object {},
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "function",
-          "props": Object {},
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
           "nodeType": "function",
           "props": Object {
             "countries": Object {},
-            "players": Array [
-              "Jamie",
-              "Ed",
-              "Idan",
-              "Midge",
-            ],
+            "players": Array [],
           },
           "ref": null,
           "rendered": null,
