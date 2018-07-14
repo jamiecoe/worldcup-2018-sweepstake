@@ -13,6 +13,5 @@
     "test": "yarn test:lambda && yarn test:client",
     "test:client": "cd client && yarn test:once",
     "test:lambda": "cd lambda && yarn test"
-  },
-  "devDependencies": {}
+  }
 }
