@@ -6,6 +6,7 @@
   "author": "<Jamie Coe> <<jamiecoe66@gmail.com>>",
   "license": "MIT",
   "scripts": {
+    "start": "cd client && yarn start",
     "release": "npm version patch -m 'chore: release v%s'",
     "preversion": "yarn test",
     "version": "cd client && yarn deploy",
