@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { getFirebaseData as _getFirebaseData } from '../utils/getFirebaseData'
-import { isEmpty } from 'lodash'
+import { isEmpty } from '../utils/isEmpty'
 
 const getData = (WrappedComponent, getFirebaseData = _getFirebaseData) => {
   return class extends Component {
