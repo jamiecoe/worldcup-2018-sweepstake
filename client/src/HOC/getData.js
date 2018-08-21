@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import firebase from '../utils/firebase'
+import { getFirebaseData as _getFirebaseData } from '../utils/getFirebaseData'
 import { isEmpty } from 'lodash'
 
-const getData = WrappedComponent => {
+const getData = (WrappedComponent, getFirebaseData = _getFirebaseData) => {
   return class extends Component {
     constructor() {
       super()
@@ -13,14 +13,13 @@ const getData = WrappedComponent => {
       this.getData()
     }
 
-    getData = () => {
-      const dbRef = firebase.database().ref()
-      dbRef.on('value', snapshot => {
+    getData() {
+      getFirebaseData(snapshot => {        
         const { countries, players } = snapshot.val()
         this.setState({
           countries,
           players
-        });
+        })
       })
     }
 
