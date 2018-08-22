@@ -20,7 +20,7 @@ describe('getData HOC', () => {
       players: {}
     }
 
-    const mockGetFirebaseData = jest.fn(callback => {
+    const mockGetFirebaseData = jest.fn((callback) => {
       const snapshot = {
         val: jest.fn(() => mockState)
       }
@@ -32,7 +32,28 @@ describe('getData HOC', () => {
 
     expect(mockGetFirebaseData).toHaveBeenCalledTimes(1)
     expect(mockComponentWithData.state()).toEqual(mockState)
+
   })
 
-  it('should render the test component when state is not empty', () => {})
+  it('should render the test component when state is not empty', () => {
+    const MockComponent = () => <div>Test Component</div>
+    const mockState = {
+      countries: {},
+      players: {}
+    }
+
+    const mockGetFirebaseData = jest.fn((callback) => {
+      const snapshot = {
+        val: jest.fn(() => mockState)
+      }
+      callback(snapshot)
+    })
+
+    const MockComponentWithData = getData(MockComponent, mockGetFirebaseData)
+    const mockComponentWithData = shallow(<MockComponentWithData />)
+
+    expect(
+      mockComponentWithData.contains(<MockComponent {...mockState} />)
+    ).toBe(true)
+  })
 })
