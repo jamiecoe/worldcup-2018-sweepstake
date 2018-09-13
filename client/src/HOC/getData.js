@@ -4,8 +4,8 @@ import { isEmpty } from '../utils/isEmpty'
 
 const getData = (WrappedComponent, getFirebaseData = _getFirebaseData) => {
   return class extends Component {
-    constructor() {
-      super()
+    constructor(props) {
+      super(props)
       this.state = {}
     }
 
@@ -14,16 +14,19 @@ const getData = (WrappedComponent, getFirebaseData = _getFirebaseData) => {
     }
 
     getData() {
-      getFirebaseData(snapshot => {        
-        const { countries, players } = snapshot.val()
-        this.setState({
-          countries,
-          players
+      getFirebaseData()
+        .then(snapshot => {
+          console.log("2. setting state with snapshot")
+          const { countries, players } = snapshot.val()                    
+          this.setState({
+            countries,
+            players
+          })
         })
-      })
     }
 
     render() {
+      console.log("3. rendering component")
       if (isEmpty(this.state)) {
         return <span>Loading...</span>
       }
