@@ -6,6 +6,6 @@ export const getFirebaseData = () => {
   const dbRef = firebase.database().ref()
 
   return new Promise((resolve, reject) => {
-    dbRef.on('value', resolve)
+    dbRef.on('value', resolve, reject)
   })
 }
