@@ -29,7 +29,6 @@ const getData = (WrappedComponent, getFirebaseData = _getFirebaseData) => {
         }
 
         render() {
-            console.log("3. rendering component")
             if (isEmpty(this.state)) {
                 return <span>Loading...</span>
             }

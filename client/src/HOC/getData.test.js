@@ -27,8 +27,11 @@ describe('getData HOC', () => {
 
     it('should initially show the loading <span>, when state is empty', () => {
         const MockComponent = () => <div>Test Component</div>
+        const mockState = {};
+        const mockSnapshot = {val: () => mockState};
+
         const mockGetFirebaseData = () => {
-            return Promise.resolve({val: () => ({})})
+            return Promise.resolve(mockSnapshot)
         }
 
         const MockComponentWithData = getData(MockComponent, mockGetFirebaseData)
@@ -44,25 +47,16 @@ describe('getData HOC', () => {
             countries: {},
             players: {}
         }
+        const mockSnapshot = {val: () => mockState};
 
-        const mockGetFirebaseData = jest.fn(() => {
-            const snapshot = {
-                val: () => mockState
-            }
-
-            return Promise.resolve(snapshot)
-        })
+        const mockGetFirebaseData = () => Promise.resolve(mockSnapshot)
 
         const MockComponentWithData = getData(MockComponent, mockGetFirebaseData)
         const mockComponentWithData = shallow(<MockComponentWithData/>)
 
-        Promise.resolve().then(() => {
-            expect(mockGetFirebaseData).toHaveBeenCalled()
+        mockComponentWithData.setState(mockState)
 
-            mockComponentWithData.update()
-            expect(mockComponentWithData.contains(<MockComponent countries={{}} players={{}}/>)).toBe(true)
-        })
-
+        expect(mockComponentWithData.contains(<MockComponent countries={{}} players={{}}/>)).toBe(true)
     })
 
     it('should do something if getFirebaseData() throws an error', () => {
