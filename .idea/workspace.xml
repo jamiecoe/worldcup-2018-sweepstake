@@ -2,10 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d67d44e-f477-439a-b1d1-60ef781721c4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/client/src/utils/mapDataToState.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/utils/mapDataToState.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/utils/renderBasedOnState.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/utils/renderBasedOnState.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/worldcup-2018-sweepstake.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/worldcup-2018-sweepstake.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/HOC/getData.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/HOC/getData.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/HOC/getData.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/HOC/getData.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/utils/isEmpty.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/utils/isEmpty.test.js" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,44 +21,58 @@
   <component name="CodeInsightWorkspaceSettings">
     <option name="optimizeImportsOnTheFly" value="true" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/worldcup_2018_sweepstake$mapDataToState_should_call_setState_with_the_snapshot_values__if_there_are_no_errors.dat" NAME="mapDataToState.should call setState with the snapshot values, if there are no errors Coverage Results" MODIFIED="1537947629033" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/worldcup_2018_sweepstake$mapDataToState.dat" NAME="mapDataToState Coverage Results" MODIFIED="1537947777580" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/worldcup_2018_sweepstake$getData_HOC_renderBasedOnState_should_return_a_loading_message_component_if_state_does_not_contain_the_required_values.dat" NAME="getData HOC.renderBasedOnState.should return a loading message component if state does not contain the required values Coverage Results" MODIFIED="1537861541709" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/worldcup_2018_sweepstake$getData_HOC_renderBasedOnState.dat" NAME="getData HOC.renderBasedOnState Coverage Results" MODIFIED="1537862871058" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/worldcup_2018_sweepstake$getData_HOC.dat" NAME="getData HOC Coverage Results" MODIFIED="1537862908569" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="419" />
+  </component>
   <component name="FUSProjectUsageTrigger">
     <session id="1822953665">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="7" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.open.time.6" value="4" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
         <counts>
-          <entry key="ESLintLanguageService" value="3" />
+          <entry key="ESLintLanguageService" value="8" />
+          <entry key="PrettierLanguageServiceImpl" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="eslintrc" value="1" />
-          <entry key="js" value="3" />
+          <entry key="js" value="13" />
           <entry key="json" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="JSON" value="4" />
-          <entry key="JavaScript" value="3" />
+          <entry key="JavaScript" value="12" />
+          <entry key="Scratch" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="eslintrc" value="27" />
-          <entry key="js" value="1239" />
+          <entry key="js" value="4096" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="27" />
-          <entry key="JavaScript" value="1239" />
+          <entry key="JavaScript" value="4096" />
         </counts>
       </usages-collector>
     </session>
@@ -84,32 +103,14 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5961228">
+    <splitter split-orientation="horizontal" split-proportion="0.5838828">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/.eslintrc">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="75">
-                  <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/lambda/.eslintrc.json">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="105">
-                  <caret line="7" selection-start-line="7" selection-end-line="7" />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/client/src/HOC/getData.test.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="130">
-                  <caret line="51" column="41" lean-forward="true" selection-start-line="51" selection-start-column="41" selection-end-line="51" selection-end-column="41" />
+                <state relative-caret-position="11">
+                  <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
                   <folding>
                     <element signature="e#0#25#0" expanded="true" />
                   </folding>
@@ -126,7 +127,16 @@
             <entry file="file://$PROJECT_DIR$/client/src/utils/getFirebaseData.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="165">
-                  <caret line="11" selection-start-line="11" selection-end-line="11" />
+                  <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/src/utils/mapDataToState.test.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="240">
+                  <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
                 </state>
               </provider>
             </entry>
@@ -134,12 +144,33 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+        <leaf>
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/client/src/HOC/getData.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="259">
-                  <caret line="26" column="23" lean-forward="true" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
+                <state relative-caret-position="195">
+                  <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
+                  <folding>
+                    <element signature="e#0#40#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/src/utils/renderBasedOnState.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="60">
+                  <caret line="4" column="31" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/src/utils/mapDataToState.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state>
+                  <caret column="14" lean-forward="true" selection-start-column="14" selection-end-column="14" />
                 </state>
               </provider>
             </entry>
@@ -147,6 +178,13 @@
         </leaf>
       </split-second>
     </splitter>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -156,8 +194,13 @@
       <list>
         <option value="$PROJECT_DIR$/client/.eslintrc" />
         <option value="$PROJECT_DIR$/client/src/utils/getFirebaseData.js" />
+        <option value="$PROJECT_DIR$/client/src/utils/mapDataToState.test.js" />
+        <option value="$PROJECT_DIR$/client/src/HOC/renderBasedOnState.test.js" />
+        <option value="$PROJECT_DIR$/client/src/utils/mapDataToState.js" />
         <option value="$PROJECT_DIR$/client/src/HOC/getData.js" />
+        <option value="$PROJECT_DIR$/client/src/utils/renderBasedOnState.test.js" />
         <option value="$PROJECT_DIR$/client/src/HOC/getData.test.js" />
+        <option value="$PROJECT_DIR$/client/src/utils/renderBasedOnState.js" />
       </list>
     </option>
   </component>
@@ -192,8 +235,8 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
-    <option name="width" value="1280" />
-    <option name="height" value="777" />
+    <option name="width" value="1680" />
+    <option name="height" value="1027" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -220,9 +263,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -241,6 +283,20 @@
               <item name="client" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="worldcup-2018-sweepstake" type="b2602c69:ProjectViewProjectNode" />
+              <item name="worldcup-2018-sweepstake" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="HOC" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="worldcup-2018-sweepstake" type="b2602c69:ProjectViewProjectNode" />
+              <item name="worldcup-2018-sweepstake" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -251,22 +307,30 @@
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537737318812" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537949312203" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JavaScript" />
     <property name="js.last.introduce.type" value="CONST" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
-    <property name="node.js.path.for.package.eslint" value="$USER_HOME$/.nvm/versions/node/v9.11.1/bin/node" />
-    <property name="node.js.path.for.package.standard" value="$USER_HOME$/.nvm/versions/node/v9.11.1/bin/node" />
+    <property name="node.js.path.for.package.eslint" value="$USER_HOME$/.nvm/versions/node/v9.10.0/bin/node" />
+    <property name="node.js.path.for.package.standard" value="$USER_HOME$/.nvm/versions/node/v9.10.0/bin/node" />
     <property name="node.js.selected.package.eslint" value="$PROJECT_DIR$/client/node_modules/eslint" />
     <property name="node.js.selected.package.standard" value="$PROJECT_DIR$/client/node_modules/eslint" />
     <property name="nodejs.jest.jest_package" value="$PROJECT_DIR$/client/node_modules/react-scripts" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="prettierjs.PrettierConfiguration.NodeInterpreter" value="project" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="$USER_HOME$/.nvm/versions/node/v9.10.0/lib/node_modules/prettier" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="editing.templates" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/src/utils" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -280,9 +344,9 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Jest.getData HOC.should render the test component when state is not empty">
+  <component name="RunManager" selected="Jest.getData HOC">
     <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
-      <node-interpreter value="$USER_HOME$/.nvm/versions/node/v9.11.1/bin/node" />
+      <node-interpreter value="$USER_HOME$/.nvm/versions/node/v9.10.0/bin/node" />
       <node-options value="" />
       <working-dir value="" />
       <envs />
@@ -290,7 +354,7 @@
       <method v="2" />
     </configuration>
     <configuration name="getData HOC" type="JavaScriptTestRunnerJest" factoryName="Jest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="$USER_HOME$/.nvm/versions/node/v9.11.1/bin/node" />
+      <node-interpreter value="$USER_HOME$/.nvm/versions/node/v9.10.0/bin/node" />
       <node-options value="" />
       <working-dir value="$PROJECT_DIR$/client" />
       <envs />
@@ -301,8 +365,8 @@
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="getData HOC.mapSnapshotToState.should call setState with the snapshot values" type="JavaScriptTestRunnerJest" factoryName="Jest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="$USER_HOME$/.nvm/versions/node/v9.11.1/bin/node" />
+    <configuration name="getData HOC.should render an error message if state contains an error message" type="JavaScriptTestRunnerJest" factoryName="Jest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="$USER_HOME$/.nvm/versions/node/v9.10.0/bin/node" />
       <node-options value="" />
       <working-dir value="$PROJECT_DIR$/client" />
       <envs />
@@ -310,13 +374,12 @@
       <test-file value="$PROJECT_DIR$/client/src/HOC/getData.test.js" />
       <test-names>
         <test-name value="getData HOC" />
-        <test-name value="mapSnapshotToState" />
-        <test-name value="should call setState with the snapshot values" />
+        <test-name value="should render an error message if state contains an error message" />
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="getData HOC.should render the test component when state is not empty" type="JavaScriptTestRunnerJest" factoryName="Jest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="$USER_HOME$/.nvm/versions/node/v9.11.1/bin/node" />
+    <configuration name="getData HOC.should render the loading message, when state is empty" type="JavaScriptTestRunnerJest" factoryName="Jest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="$USER_HOME$/.nvm/versions/node/v9.10.0/bin/node" />
       <node-options value="" />
       <working-dir value="$PROJECT_DIR$/client" />
       <envs />
@@ -324,25 +387,49 @@
       <test-file value="$PROJECT_DIR$/client/src/HOC/getData.test.js" />
       <test-names>
         <test-name value="getData HOC" />
-        <test-name value="should render the test component when state is not empty" />
+        <test-name value="should render the loading message, when state is empty" />
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="getData.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" nameIsGenerated="true" path-to-js-file="getData.js" working-dir="$PROJECT_DIR$/client/src/HOC">
+    <configuration name="getData HOC.should render the wrapped component when state is NOT empty" type="JavaScriptTestRunnerJest" factoryName="Jest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="$USER_HOME$/.nvm/versions/node/v9.10.0/bin/node" />
+      <node-options value="" />
+      <working-dir value="$PROJECT_DIR$/client" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/client/src/HOC/getData.test.js" />
+      <test-names>
+        <test-name value="getData HOC" />
+        <test-name value="should render the wrapped component when state is NOT empty" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="renderBasedOnState" type="JavaScriptTestRunnerJest" factoryName="Jest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="$USER_HOME$/.nvm/versions/node/v9.10.0/bin/node" />
+      <node-options value="" />
+      <working-dir value="$PROJECT_DIR$/client" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/client/src/utils/renderBasedOnState.test.js" />
+      <test-names>
+        <test-name value="renderBasedOnState" />
+      </test-names>
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Jest.getData HOC.mapSnapshotToState.should call setState with the snapshot values" />
+      <item itemvalue="Jest.renderBasedOnState" />
+      <item itemvalue="Jest.getData HOC.should render the loading message, when state is empty" />
+      <item itemvalue="Jest.getData HOC.should render the wrapped component when state is NOT empty" />
+      <item itemvalue="Jest.getData HOC.should render an error message if state contains an error message" />
       <item itemvalue="Jest.getData HOC" />
-      <item itemvalue="Jest.getData HOC.should render the test component when state is not empty" />
-      <item itemvalue="Node.js.getData.js" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Jest.getData HOC.should render the test component when state is not empty" />
-        <item itemvalue="Node.js.getData.js" />
         <item itemvalue="Jest.getData HOC" />
-        <item itemvalue="Jest.getData HOC.mapSnapshotToState.should call setState with the snapshot values" />
+        <item itemvalue="Jest.getData HOC.should render an error message if state contains an error message" />
+        <item itemvalue="Jest.renderBasedOnState" />
+        <item itemvalue="Jest.getData HOC.should render the wrapped component when state is NOT empty" />
+        <item itemvalue="Jest.getData HOC.should render the loading message, when state is empty" />
       </list>
     </recent_temporary>
   </component>
@@ -361,49 +448,54 @@
       <workItem from="1537345477731" duration="9753000" />
       <workItem from="1537630029173" duration="505000" />
       <workItem from="1537630581177" duration="4206000" />
+      <workItem from="1537774745110" duration="154000" />
+      <workItem from="1537774915381" duration="87000" />
+      <workItem from="1537775021380" duration="58000" />
+      <workItem from="1537775095956" duration="99000" />
+      <workItem from="1537775221648" duration="10418000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="getData_HOC_should_render_the_test_component_when_state_is_not_empty - 2018.09.23 at 22h 12m 44s.xml">
-      <configuration name="getData HOC.should render the test component when state is not empty" configurationId="JavaScriptTestRunnerJest" />
+    <history-entry file="getData_HOC_should_render_the_loading_message,_when_state_is_empty - 2018.09.26 at 09h 03m 37s.xml">
+      <configuration name="getData HOC.should render the loading message, when state is empty" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="getData_HOC_should_render_the_test_component_when_state_is_not_empty - 2018.09.23 at 22h 12m 57s.xml">
-      <configuration name="getData HOC.should render the test component when state is not empty" configurationId="JavaScriptTestRunnerJest" />
+    <history-entry file="getData_HOC_should_render_the_loading_message,_when_state_is_empty - 2018.09.26 at 09h 03m 45s.xml">
+      <configuration name="getData HOC.should render the loading message, when state is empty" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="getData_HOC_should_render_the_test_component_when_state_is_not_empty - 2018.09.23 at 22h 16m 39s.xml">
-      <configuration name="getData HOC.should render the test component when state is not empty" configurationId="JavaScriptTestRunnerJest" />
+    <history-entry file="getData_HOC_should_render_the_wrapped_component_when_state_is_NOT_empty - 2018.09.26 at 09h 10m 47s.xml">
+      <configuration name="getData HOC.should render the wrapped component when state is NOT empty" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="getData_HOC_should_render_the_test_component_when_state_is_not_empty - 2018.09.23 at 22h 17m 30s.xml">
-      <configuration name="getData HOC.should render the test component when state is not empty" configurationId="JavaScriptTestRunnerJest" />
+    <history-entry file="getData_HOC_should_render_the_wrapped_component_when_state_is_NOT_empty - 2018.09.26 at 09h 11m 08s.xml">
+      <configuration name="getData HOC.should render the wrapped component when state is NOT empty" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="getData_HOC_should_render_the_test_component_when_state_is_not_empty - 2018.09.23 at 22h 17m 51s.xml">
-      <configuration name="getData HOC.should render the test component when state is not empty" configurationId="JavaScriptTestRunnerJest" />
+    <history-entry file="getData_HOC_should_render_the_wrapped_component_when_state_is_NOT_empty - 2018.09.26 at 09h 11m 44s.xml">
+      <configuration name="getData HOC.should render the wrapped component when state is NOT empty" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="getData_HOC_should_render_the_test_component_when_state_is_not_empty - 2018.09.23 at 22h 18m 03s.xml">
-      <configuration name="getData HOC.should render the test component when state is not empty" configurationId="JavaScriptTestRunnerJest" />
+    <history-entry file="renderBasedOnState - 2018.09.26 at 09h 13m 50s.xml">
+      <configuration name="renderBasedOnState" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="getData_HOC_should_render_the_test_component_when_state_is_not_empty - 2018.09.23 at 22h 18m 34s.xml">
-      <configuration name="getData HOC.should render the test component when state is not empty" configurationId="JavaScriptTestRunnerJest" />
+    <history-entry file="renderBasedOnState - 2018.09.26 at 09h 14m 24s.xml">
+      <configuration name="renderBasedOnState" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="getData_HOC_should_render_the_test_component_when_state_is_not_empty - 2018.09.23 at 22h 21m 14s.xml">
-      <configuration name="getData HOC.should render the test component when state is not empty" configurationId="JavaScriptTestRunnerJest" />
+    <history-entry file="getData_HOC_should_render_an_error_message_if_state_contains_an_error_message - 2018.09.26 at 09h 16m 09s.xml">
+      <configuration name="getData HOC.should render an error message if state contains an error message" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="getData_HOC_should_render_the_test_component_when_state_is_not_empty - 2018.09.23 at 22h 22m 16s.xml">
-      <configuration name="getData HOC.should render the test component when state is not empty" configurationId="JavaScriptTestRunnerJest" />
+    <history-entry file="getData_HOC_should_render_an_error_message_if_state_contains_an_error_message - 2018.09.26 at 09h 16m 17s.xml">
+      <configuration name="getData HOC.should render an error message if state contains an error message" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="getData_HOC_should_render_the_test_component_when_state_is_not_empty - 2018.09.23 at 22h 23m 08s.xml">
-      <configuration name="getData HOC.should render the test component when state is not empty" configurationId="JavaScriptTestRunnerJest" />
+    <history-entry file="getData_HOC - 2018.09.26 at 09h 16m 36s.xml">
+      <configuration name="getData HOC" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15755000" />
+    <option name="totallyTimeSpent" value="26571000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="777" extended-state="6" />
+    <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.16719915" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16666667" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -413,7 +505,7 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3562044" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.35614973" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -423,8 +515,9 @@
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="11" />
+      <window_info anchor="right" id="Coverage" side_tool="true" weight="0.32967034" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.24969475" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
@@ -439,6 +532,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/client/node_modules/enzyme/build/ReactWrapper.js">
@@ -468,26 +565,69 @@
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/utils/isEmpty.test.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/utils/isEmpty.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/utils/getFirebaseData.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/HOC/getData.js">
+    <entry file="file://$PROJECT_DIR$/client/src/utils/mapDataToState.test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="26" column="23" lean-forward="true" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
+        <state relative-caret-position="240">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/utils/mapDataToState.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="14" lean-forward="true" selection-start-column="14" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/utils/renderBasedOnState.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="27" lean-forward="true" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/utils/renderBasedOnState.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="31" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/HOC/getData.test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="51" column="41" lean-forward="true" selection-start-line="51" selection-start-column="41" selection-end-line="51" selection-end-column="41" />
+        <state relative-caret-position="11">
+          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/HOC/getData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>

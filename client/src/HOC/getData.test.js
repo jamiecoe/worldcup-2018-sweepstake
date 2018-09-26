@@ -1,66 +1,59 @@
-import React from 'react'
-import {shallow} from 'enzyme'
-import getData, {mapSnapshotToState} from './getData'
+import React from "react"
+import { shallow } from "enzyme"
+import { getData } from "./getData"
 
-describe('getData HOC', () => {
-
-    describe('mapSnapshotToState', function () {
-        it('should call setState with the snapshot values', () => {
-            const mockComponentClass = {
-                setState: jest.fn()
-            }
-
-            const mockValues = {
-                countries: {},
-                players: {}
-            }
-
-            const mockSnapshot = {
-                val: () => mockValues
-            }
-
-            mapSnapshotToState(mockComponentClass, mockSnapshot);
-
-            expect(mockComponentClass.setState).toHaveBeenCalledWith(mockValues)
-        })
-    })
-
-    it('should initially show the loading <span>, when state is empty', () => {
+describe("getData HOC", () => {
+    it("should render the loading message, when state is empty", () => {
         const MockComponent = () => <div>Test Component</div>
-        const mockState = {};
-        const mockSnapshot = {val: () => mockState};
+        const mockMapDataToState = () => {}
 
-        const mockGetFirebaseData = () => {
-            return Promise.resolve(mockSnapshot)
-        }
-
-        const MockComponentWithData = getData(MockComponent, mockGetFirebaseData)
+        const MockComponentWithData = getData(MockComponent, mockMapDataToState)
         const mockComponentWithData = shallow(<MockComponentWithData/>)
 
         expect(mockComponentWithData.contains(<span>Loading...</span>)).toBe(true)
     })
 
-
-    it('should render the test component when state is not empty', () => {
+    it("should render the wrapped component when state is NOT empty", () => {
         const MockComponent = () => <div>Test Component</div>
-        const mockState = {
-            countries: {},
-            players: {}
-        }
-        const mockSnapshot = {val: () => mockState};
+        const mockMapDataToState = () => {}
 
-        const mockGetFirebaseData = () => Promise.resolve(mockSnapshot)
-
-        const MockComponentWithData = getData(MockComponent, mockGetFirebaseData)
+        const MockComponentWithData = getData(MockComponent, mockMapDataToState)
         const mockComponentWithData = shallow(<MockComponentWithData/>)
 
-        mockComponentWithData.setState(mockState)
+        mockComponentWithData.instance().setState(state => ({
+            ...state,
+            countries: {},
+            players: {}
+        }))
 
-        expect(mockComponentWithData.contains(<MockComponent countries={{}} players={{}}/>)).toBe(true)
+        mockComponentWithData.update()
+
+        expect(
+            mockComponentWithData.contains(
+                <MockComponent countries={{}} players={{}}/>
+            )
+        ).toBe(true)
     })
 
-    it('should do something if getFirebaseData() throws an error', () => {
+    it('should render an error message if state contains an error message', () => {
+        const MockComponent = () => <div>Test Component</div>
+        const mockMapDataToState = () => {}
 
-    });
+        const MockComponentWithData = getData(MockComponent, mockMapDataToState)
+        const mockComponentWithData = shallow(<MockComponentWithData/>)
 
+        const mockErrorMessage = 'Test error'
+
+        mockComponentWithData.instance().setState({
+            error: mockErrorMessage
+        })
+
+        mockComponentWithData.update()
+
+        expect(
+            mockComponentWithData.contains(
+                <span>Oops there has been an error! {mockErrorMessage}</span>
+            )
+        ).toBe(true)
+    })
 })

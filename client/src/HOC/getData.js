@@ -1,43 +1,30 @@
-import React, {Component} from 'react'
-import {getFirebaseData as _getFirebaseData} from '../utils/getFirebaseData'
-import {isEmpty} from '../utils/isEmpty'
+import React, { Component } from 'react'
+import { mapDataToState as _mapDataToState } from "../utils/mapDataToState"
+import { renderBasedOnState as _renderBasedOnState } from "../utils/renderBasedOnState"
 
-export const mapSnapshotToState = (Component, snapshot) => {
-    const values = snapshot.val()
-    Component.setState(values)
-}
-
-const getData = (WrappedComponent, getFirebaseData = _getFirebaseData) => {
+export const getData = (
+    WrappedComponent,
+    mapDataToState = _mapDataToState,
+    renderBasedOnState = _renderBasedOnState
+) => {
     return class extends Component {
         constructor() {
             super()
-            this.state = {}
+            this.state = {
+                error: null
+            }
         }
 
         componentDidMount() {
-            this.getData()
-        }
-
-        getData() {
-            getFirebaseData()
-                .then(snapshot => {
-                    mapSnapshotToState(this, snapshot)
-                })
-                .catch(err => {
-                    console.log(err)
-                })
+            mapDataToState(this)
         }
 
         render() {
-            if (isEmpty(this.state)) {
-                return <span>Loading...</span>
-            }
-
-            const {countries, players} = this.state
-
-            return <WrappedComponent countries={countries} players={players}/>
+            return renderBasedOnState(
+                this.state,
+                ['countries', 'players'],
+                WrappedComponent
+            )
         }
     }
 }
-
-export default getData
