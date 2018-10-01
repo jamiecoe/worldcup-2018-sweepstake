@@ -6,7 +6,7 @@ import getData from './HOC/getData';
 import registerServiceWorker from './registerServiceWorker';
 import './styles/globalStyling'
 
-const AppWithData = getData(App);
+const AppWithData = getData(App, ['countries', 'players']);
 
 ReactDOM.render(<AppWithData />, document.getElementById('root'));
 registerServiceWorker();

@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 import { mapDataToState as _mapDataToState } from "../utils/mapDataToState"
 import { renderBasedOnState as _renderBasedOnState } from "../utils/renderBasedOnState"
 
 export const getData = (
     WrappedComponent,
+    requiredStateKeys,
     mapDataToState = _mapDataToState,
     renderBasedOnState = _renderBasedOnState
 ) => {
@@ -22,7 +23,7 @@ export const getData = (
         render() {
             return renderBasedOnState(
                 this.state,
-                ['countries', 'players'],
+                requiredStateKeys,
                 WrappedComponent
             )
         }

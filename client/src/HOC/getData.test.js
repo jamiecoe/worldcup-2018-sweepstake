@@ -7,7 +7,8 @@ describe("getData HOC", () => {
         const MockComponent = () => <div>Test Component</div>
         const mockMapDataToState = () => {}
 
-        const MockComponentWithData = getData(MockComponent, mockMapDataToState)
+        const requiredStateKeys = ['countries', 'players']
+        const MockComponentWithData = getData(MockComponent, requiredStateKeys, mockMapDataToState)
         const mockComponentWithData = shallow(<MockComponentWithData/>)
 
         expect(mockComponentWithData.contains(<span>Loading...</span>)).toBe(true)
@@ -17,7 +18,8 @@ describe("getData HOC", () => {
         const MockComponent = () => <div>Test Component</div>
         const mockMapDataToState = () => {}
 
-        const MockComponentWithData = getData(MockComponent, mockMapDataToState)
+        const requiredStateKeys = ['countries', 'players']
+        const MockComponentWithData = getData(MockComponent, requiredStateKeys, mockMapDataToState)
         const mockComponentWithData = shallow(<MockComponentWithData/>)
 
         mockComponentWithData.instance().setState(state => ({
@@ -39,7 +41,8 @@ describe("getData HOC", () => {
         const MockComponent = () => <div>Test Component</div>
         const mockMapDataToState = () => {}
 
-        const MockComponentWithData = getData(MockComponent, mockMapDataToState)
+        const requiredStateKeys = ['countries', 'players']
+        const MockComponentWithData = getData(MockComponent, requiredStateKeys, mockMapDataToState)
         const mockComponentWithData = shallow(<MockComponentWithData/>)
 
         const mockErrorMessage = 'Test error'
