@@ -1,7 +1,7 @@
 import React from "react"
-import { renderBasedOnState } from "./renderBasedOnState"
+import { renderComponentBasedOnSuccessOrError } from "./renderComponentBasedOnSuccessOrError"
 
-describe('renderBasedOnState', () => {
+describe('renderComponentBasedOnSuccessOrError', () => {
     it('should return an error message if there is an error in state', () => {
         const mockState = {
             error: 'Test error'
@@ -12,7 +12,7 @@ describe('renderBasedOnState', () => {
         const errorMessage = <span>Oops there has been an error! {mockState.error}</span>
         const WrappedComponent = () => <span>My wrapped component</span>
 
-        expect(renderBasedOnState(mockState, requiredStateValues, WrappedComponent)).toEqual(errorMessage)
+        expect(renderComponentBasedOnSuccessOrError(mockState, requiredStateValues, WrappedComponent)).toEqual(errorMessage)
     })
 
     it('should return a loading message if state does not contain the required values', () => {
@@ -25,7 +25,7 @@ describe('renderBasedOnState', () => {
         const loadingMessage = <span>Loading...</span>
         const WrappedComponent = () => <span>My wrapped component</span>
 
-        expect(renderBasedOnState(mockState, requiredStateValues, WrappedComponent)).toEqual(loadingMessage)
+        expect(renderComponentBasedOnSuccessOrError(mockState, requiredStateValues, WrappedComponent)).toEqual(loadingMessage)
     })
 
     it('should a component with required state values if state they are available on state', () => {
@@ -39,7 +39,7 @@ describe('renderBasedOnState', () => {
 
         const WrappedComponent = () => <span>My wrapped component</span>
 
-        expect(renderBasedOnState(mockState, requiredStateKeys, WrappedComponent))
+        expect(renderComponentBasedOnSuccessOrError(mockState, requiredStateKeys, WrappedComponent))
             .toEqual(<WrappedComponent countries={mockState.countries} players={mockState.players}/>)
     })
 })

@@ -1,27 +1,33 @@
 import { Component } from 'react'
 import { mapDataToState as _mapDataToState } from "../utils/mapDataToState"
-import { renderBasedOnState as _renderBasedOnState } from "../utils/renderBasedOnState"
+import { renderComponentBasedOnSuccessOrError as _renderComponentBasedOnSuccessOrError } from "../utils/renderComponentBasedOnSuccessOrError"
+import { getFirebaseData } from "../utils/getFirebaseData"
 
 export const getData = (
     WrappedComponent,
     requiredStateKeys,
-    mapDataToState = _mapDataToState,
-    renderBasedOnState = _renderBasedOnState
+    renderComponentBasedOnSuccessOrError = _renderComponentBasedOnSuccessOrError
 ) => {
     return class extends Component {
         constructor() {
             super()
-            this.state = {
-                error: null
-            }
+            this.state = {}
         }
 
         componentDidMount() {
-            mapDataToState(this)
+            getFirebaseData()
+                .then(data => {
+                    this.setState(data)
+                })
+                .catch(err => {
+                    this.setState({
+                        error: err.message
+                    })
+                })
         }
 
         render() {
-            return renderBasedOnState(
+            return renderComponentBasedOnSuccessOrError(
                 this.state,
                 requiredStateKeys,
                 WrappedComponent
@@ -29,3 +35,4 @@ export const getData = (
         }
     }
 }
+
