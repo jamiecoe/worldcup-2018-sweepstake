@@ -1,5 +1,6 @@
 import React from "react"
 
+// ensureComponentRenderedOnSuccessOrError
 export const renderBasedOnState = (state, requiredStateKeys, WrappedComponent) => {
     if (state.error) {
         return <span>Oops there has been an error! {state.error}</span>

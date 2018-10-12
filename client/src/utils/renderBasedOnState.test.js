@@ -9,10 +9,10 @@ describe('renderBasedOnState', () => {
 
         const requiredStateValues = ['countries', 'players']
 
-        const errorMessage = <span>Oops there has been an error! {mockState.error}</span>
+        const expectedErrorMessage = <span>Oops there has been an error! {mockState.error}</span>
         const WrappedComponent = () => <span>My wrapped component</span>
 
-        expect(renderBasedOnState(mockState, requiredStateValues, WrappedComponent)).toEqual(errorMessage)
+        expect(renderBasedOnState(mockState, requiredStateValues, WrappedComponent)).toEqual(expectedErrorMessage)
     })
 
     it('should return a loading message if state does not contain the required values', () => {
@@ -22,13 +22,13 @@ describe('renderBasedOnState', () => {
 
         const requiredStateValues = ['countries', 'players']
 
-        const loadingMessage = <span>Loading...</span>
+        const expectedLoadingMessage = <span>Loading...</span>
         const WrappedComponent = () => <span>My wrapped component</span>
 
-        expect(renderBasedOnState(mockState, requiredStateValues, WrappedComponent)).toEqual(loadingMessage)
+        expect(renderBasedOnState(mockState, requiredStateValues, WrappedComponent)).toEqual(expectedLoadingMessage)
     })
 
-    it('should a component with required state values if state they are available on state', () => {
+    it('should return the WrappedComponent with required state values if they are available on state', () => {
         const mockState = {
             countries: {},
             players: {},
