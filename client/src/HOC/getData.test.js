@@ -1,8 +1,15 @@
-import React from "react"
-import { shallow } from "enzyme"
-import { getData } from "./getData"
+import React from 'react'
+import { shallow } from 'enzyme'
 
-describe("getData HOC", () => {
+import {
+    getData,
+    renderComponentBasedOnSuccessOrError,
+    ensureStateHasRequiredKeys
+} from './getData'
+import { SuccessState } from '../utils/SuccessState'
+import { ErrorState } from '../utils/ErrorState'
+
+describe('getData HOC', () => {
     // it("should render the loading message, when state is empty", () => {
     //     const MockComponent = () => <div>Test Component</div>
     //     const mockMapDataToState = () => {}
@@ -59,4 +66,65 @@ describe("getData HOC", () => {
     //         )
     //     ).toBe(true)
     // })
+
+    describe('renderComponentBasedOnSuccessOrError', () => {
+        it('should return an error message if there is an error in state', () => {
+            const mockState = new ErrorState('test error')
+
+            const errorMessage = <span>Oops there has been an error! {mockState.getState()}</span>
+            const WrappedComponent = () => <span>My wrapped component</span>
+
+            expect(renderComponentBasedOnSuccessOrError(mockState, WrappedComponent)).toEqual(errorMessage)
+        })
+
+        it('should return a loading message if state has not been updated yet', () => {
+            const mockState = {}
+
+            const loadingMessage = <span>Loading...</span>
+            const WrappedComponent = () => <span>My wrapped component</span>
+
+            expect(renderComponentBasedOnSuccessOrError(mockState, WrappedComponent)).toEqual(loadingMessage)
+        })
+
+        it('should a component with required state values if state they are available on state', () => {
+            const mockState = new SuccessState({
+                countries: {},
+                players: {}
+            })
+
+            const WrappedComponent = () => <span>My wrapped component</span>
+
+            expect(renderComponentBasedOnSuccessOrError(mockState, WrappedComponent))
+                .toEqual(<WrappedComponent {...mockState.getState()}/>)
+        })
+    })
+
+    describe('ensureStateHasRequiredKeys', () => {
+        it('should return a SuccessState object with the required data, if the required keys are present', () => {
+            const mockData = {
+                countries: {},
+                players: {}
+            }
+
+            const requiredStateKeys = [ 'countries', 'players' ]
+
+            const newState = ensureStateHasRequiredKeys(mockData, requiredStateKeys)
+
+            expect(newState).toBeInstanceOf(SuccessState)
+            expect(newState.getState()).toEqual(mockData)
+        })
+
+        it('should return a ErrorState object if any required keys are missing', () => {
+            const mockData = {
+                countries: {}
+            }
+
+            const requiredStateKeys = [ 'countries', 'players' ]
+
+            const newState = ensureStateHasRequiredKeys(mockData, requiredStateKeys)
+
+            expect(newState).toBeInstanceOf(ErrorState)
+            expect(newState.getState()).toEqual('Missing required state keys')
+        })
+    })
 })

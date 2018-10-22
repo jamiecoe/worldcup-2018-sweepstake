@@ -1,12 +1,13 @@
-import { Component } from 'react'
-import { mapDataToState as _mapDataToState } from "../utils/mapDataToState"
-import { renderComponentBasedOnSuccessOrError as _renderComponentBasedOnSuccessOrError } from "../utils/renderComponentBasedOnSuccessOrError"
-import { getFirebaseData } from "../utils/getFirebaseData"
+import React, { Component } from 'react'
+import { pick } from 'lodash'
+
+import { getFirebaseData } from '../utils/getFirebaseData'
+import { SuccessState } from '../utils/SuccessState'
+import { ErrorState } from '../utils/ErrorState'
 
 export const getData = (
     WrappedComponent,
-    requiredStateKeys,
-    renderComponentBasedOnSuccessOrError = _renderComponentBasedOnSuccessOrError
+    requiredStateKeys
 ) => {
     return class extends Component {
         constructor() {
@@ -17,12 +18,12 @@ export const getData = (
         componentDidMount() {
             getFirebaseData()
                 .then(data => {
-                    this.setState(data)
+                    this.setState(
+                        ensureStateHasRequiredKeys(data, requiredStateKeys)
+                    )
                 })
                 .catch(err => {
-                    this.setState({
-                        error: err.message
-                    })
+                    this.setState(new ErrorState(err.message))
                 })
         }
 
@@ -34,5 +35,22 @@ export const getData = (
             )
         }
     }
+}
+
+export const ensureStateHasRequiredKeys = (state, requiredKeys) => {
+    const requiredState = pick(state, requiredKeys)
+    return Object.keys(requiredState).length === requiredKeys.length
+        ? new SuccessState(requiredState)
+        : new ErrorState('Missing required state keys')
+}
+
+export const renderComponentBasedOnSuccessOrError = (state, WrappedComponent) => {
+    if (ErrorState.isError(state)) {
+        return <span>Oops there has been an error! {state.getState()}</span>
+    } else if (SuccessState.isSuccess(state)) {
+        return <WrappedComponent {...state.getState()} />
+    }
+
+    return <span>Loading...</span>
 }
 
