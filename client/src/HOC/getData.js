@@ -19,18 +19,17 @@ export const getData = (
             getFirebaseData()
                 .then(data => {
                     this.setState(
-                        ensureStateHasRequiredKeys(data, requiredStateKeys)
+                        { dataOptional: ensureStateHasRequiredKeys(data, requiredStateKeys) }
                     )
                 })
                 .catch(err => {
-                    this.setState(new ErrorState(err.message))
+                    this.setState({ dataOptional: new ErrorState(err.message) })
                 })
         }
 
         render() {
             return renderComponentBasedOnSuccessOrError(
-                this.state,
-                requiredStateKeys,
+                this.state.dataOptional,
                 WrappedComponent
             )
         }
@@ -44,11 +43,11 @@ export const ensureStateHasRequiredKeys = (state, requiredKeys) => {
         : new ErrorState('Missing required state keys')
 }
 
-export const renderComponentBasedOnSuccessOrError = (state, WrappedComponent) => {
-    if (ErrorState.isError(state)) {
-        return <span>Oops there has been an error! {state.getState()}</span>
-    } else if (SuccessState.isSuccess(state)) {
-        return <WrappedComponent {...state.getState()} />
+export const renderComponentBasedOnSuccessOrError = (dataOptional, WrappedComponent) => {
+    if (ErrorState.isError(dataOptional)) {
+        return <span>Oops there has been an error! {dataOptional.getState()}</span>
+    } else if (SuccessState.isSuccess(dataOptional)) {
+        return <WrappedComponent {...dataOptional.getState()} />
     }
 
     return <span>Loading...</span>

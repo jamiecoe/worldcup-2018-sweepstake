@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import App from './Components/App';
-import getData from './HOC/getData';
+import { getData } from './HOC/getData';
 import registerServiceWorker from './registerServiceWorker';
 import './styles/globalStyling'
 
