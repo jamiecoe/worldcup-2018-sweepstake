@@ -69,33 +69,33 @@ describe('getData HOC', () => {
 
     describe('renderComponentBasedOnSuccessOrError', () => {
         it('should return an error message if there is an error in state', () => {
-            const mockState = new ErrorState('test error')
+            const mockDataOptional = new ErrorState('test error')
 
-            const errorMessage = <span>Oops there has been an error! {mockState.getState()}</span>
+            const errorMessage = <span>Oops there has been an error! {mockDataOptional.getState()}</span>
             const WrappedComponent = () => <span>My wrapped component</span>
 
-            expect(renderComponentBasedOnSuccessOrError(mockState, WrappedComponent)).toEqual(errorMessage)
+            expect(renderComponentBasedOnSuccessOrError(mockDataOptional, WrappedComponent)).toEqual(errorMessage)
         })
 
         it('should return a loading message if state has not been updated yet', () => {
-            const mockState = {}
+            const mockDataOptional = undefined
 
             const loadingMessage = <span>Loading...</span>
             const WrappedComponent = () => <span>My wrapped component</span>
 
-            expect(renderComponentBasedOnSuccessOrError(mockState, WrappedComponent)).toEqual(loadingMessage)
+            expect(renderComponentBasedOnSuccessOrError(mockDataOptional, WrappedComponent)).toEqual(loadingMessage)
         })
 
         it('should a component with required state values if state they are available on state', () => {
-            const mockState = new SuccessState({
+            const mockDataOptional = new SuccessState({
                 countries: {},
                 players: {}
             })
 
             const WrappedComponent = () => <span>My wrapped component</span>
 
-            expect(renderComponentBasedOnSuccessOrError(mockState, WrappedComponent))
-                .toEqual(<WrappedComponent {...mockState.getState()}/>)
+            expect(renderComponentBasedOnSuccessOrError(mockDataOptional, WrappedComponent))
+                .toEqual(<WrappedComponent {...mockDataOptional.getState()}/>)
         })
     })
 
