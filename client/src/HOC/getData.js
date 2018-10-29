@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { pick } from 'lodash'
 
-import { getFirebaseData } from '../utils/getFirebaseData'
+import { getFirebaseData as _getFirebaseData } from '../utils/getFirebaseData'
 import { SuccessState } from '../utils/SuccessState'
 import { ErrorState } from '../utils/ErrorState'
 
 export const getData = (
     WrappedComponent,
-    requiredStateKeys
+    requiredStateKeys,
+    getFirebaseData = _getFirebaseData
 ) => {
     return class extends Component {
         constructor() {
@@ -28,7 +29,7 @@ export const getData = (
         }
 
         render() {
-            return renderComponentBasedOnSuccessOrError(
+            return returnComponentBasedOnSuccessOrError(
                 this.state.dataOptional,
                 WrappedComponent
             )
@@ -43,7 +44,7 @@ export const ensureStateHasRequiredKeys = (state, requiredKeys) => {
         : new ErrorState('Missing required state keys')
 }
 
-export const renderComponentBasedOnSuccessOrError = (dataOptional, WrappedComponent) => {
+export const returnComponentBasedOnSuccessOrError = (dataOptional, WrappedComponent) => {
     if (ErrorState.isError(dataOptional)) {
         return <span>Oops there has been an error! {dataOptional.getState()}</span>
     } else if (SuccessState.isSuccess(dataOptional)) {

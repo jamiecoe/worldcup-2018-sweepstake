@@ -1,71 +1,76 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { render, waitForElement } from 'react-testing-library'
 
 import {
     getData,
-    renderComponentBasedOnSuccessOrError,
+    returnComponentBasedOnSuccessOrError,
     ensureStateHasRequiredKeys
 } from './getData'
 import { SuccessState } from '../utils/SuccessState'
 import { ErrorState } from '../utils/ErrorState'
 
 describe('getData HOC', () => {
-    // it("should render the loading message, when state is empty", () => {
-    //     const MockComponent = () => <div>Test Component</div>
-    //     const mockMapDataToState = () => {}
-    //
-    //     const requiredStateKeys = ['countries', 'players']
-    //     const MockComponentWithData = getData(MockComponent, requiredStateKeys, mockMapDataToState)
-    //     const mockComponentWithData = shallow(<MockComponentWithData/>)
-    //
-    //     expect(mockComponentWithData.contains(<span>Loading...</span>)).toBe(true)
-    // })
-    //
-    // it("should render the wrapped component when state is NOT empty", () => {
-    //     const MockComponent = () => <div>Test Component</div>
-    //     const mockMapDataToState = () => {}
-    //
-    //     const requiredStateKeys = ['countries', 'players']
-    //     const MockComponentWithData = getData(MockComponent, requiredStateKeys, mockMapDataToState)
-    //     const mockComponentWithData = shallow(<MockComponentWithData/>)
-    //
-    //     mockComponentWithData.instance().setState(state => ({
-    //         ...state,
-    //         countries: {},
-    //         players: {}
-    //     }))
-    //
-    //     mockComponentWithData.update()
-    //
-    //     expect(
-    //         mockComponentWithData.contains(
-    //             <MockComponent countries={{}} players={{}}/>
-    //         )
-    //     ).toBe(true)
-    // })
-    //
-    // it('should render an error message if state contains an error message', () => {
-    //     const MockComponent = () => <div>Test Component</div>
-    //     const mockMapDataToState = () => {}
-    //
-    //     const requiredStateKeys = ['countries', 'players']
-    //     const MockComponentWithData = getData(MockComponent, requiredStateKeys, mockMapDataToState)
-    //     const mockComponentWithData = shallow(<MockComponentWithData/>)
-    //
-    //     const mockErrorMessage = 'Test error'
-    //
-    //     mockComponentWithData.instance().setState({
-    //         error: mockErrorMessage
-    //     })
-    //
-    //     mockComponentWithData.update()
-    //
-    //     expect(
-    //         mockComponentWithData.contains(
-    //             <span>Oops there has been an error! {mockErrorMessage}</span>
-    //         )
-    //     ).toBe(true)
-    // })
+    describe('getData', () => {
+        it('should render the loading message, while waiting for the data to be retrieved', () => {
+            const MockComponent = () => <div>Test Component</div>
+            const requiredStateKeys = []
+            const mockGetFirebaseData = () => Promise.resolve()
+
+            const MockComponentWithData = getData(MockComponent, requiredStateKeys, mockGetFirebaseData)
+            const { getByText } = render(<MockComponentWithData/>)
+
+            expect(getByText('Loading...')).toBeInTheDocument()
+        })
+
+        it('should render the wrapped component with the data, if data has been successfully retrieved', done => {
+            const MockComponent = props => (
+                <div data-testid="wrapped-component">
+                    <p>{props.countries}</p>
+                    <p>{props.players}</p>
+                </div>
+            )
+
+            const mockData = { countries: 'test countries', players: 'test players' }
+            const mockGetFirebaseData = () => Promise.resolve(mockData)
+
+            const requiredStateKeys = [ 'countries', 'players' ]
+            const MockComponentWithData = getData(MockComponent, requiredStateKeys, mockGetFirebaseData)
+            const { getByTestId } = render(<MockComponentWithData/>)
+
+            waitForElement(() => getByTestId('wrapped-component'))
+                .then((renderedComponent) => {
+                    expect(renderedComponent).toHaveTextContent(mockData.countries)
+                    expect(renderedComponent).toHaveTextContent(mockData.players)
+                    done()
+                })
+        })
+
+        it('should render an error message if there was an error fetching the data', done => {
+            const MockComponent = () => <div>Test Component</div>
+            const mockError = { message: 'test error' }
+            const mockGetFirebaseData = () => Promise.reject(mockError)
+
+            const requiredStateKeys = [ 'countries', 'players' ]
+            const MockComponentWithData = getData(MockComponent, requiredStateKeys, mockGetFirebaseData)
+            const { getByText } = render(<MockComponentWithData/>)
+
+            waitForElement(() => getByText(`Oops there has been an error! ${mockError.message}`))
+                .then(() => done())
+
+        })
+
+        it('should render an error message if the data is missing required values', done => {
+            const MockComponent = () => <div>Test Component</div>
+            const mockGetFirebaseData = () => Promise.resolve({ countries: 'test countries' })
+
+            const requiredStateKeys = [ 'countries', 'players' ]
+            const MockComponentWithData = getData(MockComponent, requiredStateKeys, mockGetFirebaseData)
+            const { getByText } = render(<MockComponentWithData/>)
+
+            waitForElement(() => getByText('Oops there has been an error! Missing required state keys'))
+                .then(() => done())
+        })
+    })
 
     describe('ensureStateHasRequiredKeys', () => {
         it('should return a SuccessState object with the required data, if the required keys are present', () => {
@@ -96,14 +101,14 @@ describe('getData HOC', () => {
         })
     })
 
-    describe('renderComponentBasedOnSuccessOrError', () => {
+    describe('returnComponentBasedOnSuccessOrError', () => {
         it('should return an error message if there is an error in state', () => {
             const mockDataOptional = new ErrorState('test error')
 
             const errorMessage = <span>Oops there has been an error! {mockDataOptional.getState()}</span>
             const WrappedComponent = () => <span>My wrapped component</span>
 
-            expect(renderComponentBasedOnSuccessOrError(mockDataOptional, WrappedComponent)).toEqual(errorMessage)
+            expect(returnComponentBasedOnSuccessOrError(mockDataOptional, WrappedComponent)).toEqual(errorMessage)
         })
 
         it('should return a loading message if state has not been updated yet', () => {
@@ -112,10 +117,10 @@ describe('getData HOC', () => {
             const loadingMessage = <span>Loading...</span>
             const WrappedComponent = () => <span>My wrapped component</span>
 
-            expect(renderComponentBasedOnSuccessOrError(mockDataOptional, WrappedComponent)).toEqual(loadingMessage)
+            expect(returnComponentBasedOnSuccessOrError(mockDataOptional, WrappedComponent)).toEqual(loadingMessage)
         })
 
-        it('should a component with required state values if state they are available on state', () => {
+        it('should return a component with required state values if state they are available on state', () => {
             const mockDataOptional = new SuccessState({
                 countries: {},
                 players: {}
@@ -123,7 +128,7 @@ describe('getData HOC', () => {
 
             const WrappedComponent = () => <span>My wrapped component</span>
 
-            expect(renderComponentBasedOnSuccessOrError(mockDataOptional, WrappedComponent))
+            expect(returnComponentBasedOnSuccessOrError(mockDataOptional, WrappedComponent))
                 .toEqual(<WrappedComponent {...mockDataOptional.getState()}/>)
         })
     })
