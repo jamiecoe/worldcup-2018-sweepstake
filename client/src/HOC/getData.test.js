@@ -67,6 +67,35 @@ describe('getData HOC', () => {
     //     ).toBe(true)
     // })
 
+    describe('ensureStateHasRequiredKeys', () => {
+        it('should return a SuccessState object with the required data, if the required keys are present', () => {
+            const mockData = {
+                countries: {},
+                players: {}
+            }
+
+            const requiredStateKeys = [ 'countries', 'players' ]
+
+            const newState = ensureStateHasRequiredKeys(mockData, requiredStateKeys)
+
+            expect(newState).toBeInstanceOf(SuccessState)
+            expect(newState.getState()).toEqual(mockData)
+        })
+
+        it('should return a ErrorState object if any required keys are missing', () => {
+            const mockData = {
+                countries: {}
+            }
+
+            const requiredStateKeys = [ 'countries', 'players' ]
+
+            const newState = ensureStateHasRequiredKeys(mockData, requiredStateKeys)
+
+            expect(newState).toBeInstanceOf(ErrorState)
+            expect(newState.getState()).toEqual('Missing required state keys')
+        })
+    })
+
     describe('renderComponentBasedOnSuccessOrError', () => {
         it('should return an error message if there is an error in state', () => {
             const mockDataOptional = new ErrorState('test error')
@@ -96,35 +125,6 @@ describe('getData HOC', () => {
 
             expect(renderComponentBasedOnSuccessOrError(mockDataOptional, WrappedComponent))
                 .toEqual(<WrappedComponent {...mockDataOptional.getState()}/>)
-        })
-    })
-
-    describe('ensureStateHasRequiredKeys', () => {
-        it('should return a SuccessState object with the required data, if the required keys are present', () => {
-            const mockData = {
-                countries: {},
-                players: {}
-            }
-
-            const requiredStateKeys = [ 'countries', 'players' ]
-
-            const newState = ensureStateHasRequiredKeys(mockData, requiredStateKeys)
-
-            expect(newState).toBeInstanceOf(SuccessState)
-            expect(newState.getState()).toEqual(mockData)
-        })
-
-        it('should return a ErrorState object if any required keys are missing', () => {
-            const mockData = {
-                countries: {}
-            }
-
-            const requiredStateKeys = [ 'countries', 'players' ]
-
-            const newState = ensureStateHasRequiredKeys(mockData, requiredStateKeys)
-
-            expect(newState).toBeInstanceOf(ErrorState)
-            expect(newState.getState()).toEqual('Missing required state keys')
         })
     })
 })
