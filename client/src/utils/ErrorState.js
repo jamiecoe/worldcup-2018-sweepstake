@@ -8,6 +8,6 @@ export class ErrorState {
     }
 
     static isError(obj) {
-        return obj instanceof this
+        return obj instanceof ErrorState
     }
 }

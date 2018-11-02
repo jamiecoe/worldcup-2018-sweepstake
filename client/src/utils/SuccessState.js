@@ -8,6 +8,6 @@ export class SuccessState {
     }
 
     static isSuccess(obj) {
-        return obj instanceof this
+        return obj instanceof SuccessState
     }
 }
